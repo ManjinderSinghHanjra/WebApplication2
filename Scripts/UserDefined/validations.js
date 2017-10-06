@@ -16,20 +16,27 @@ $(document).ready(function () {
 	});
 
 
-	/*$("#signIn").on('click', function () {
+	$("#signIn").on('click', function () {
 
 		if ($("#loginForm").valid()) {
 			var email = $("#email").val();
 			var pass = $("#password").val();
 			if (email === 'admin' && pass === 'admin') {
-				$("#failure").css("display", "none");
-				window.location.href = "/" + strHostName + "/Home/Index";// @Url.Action("Index", "Home"); 
+			    $("#failure").css("display", "none");
+			    $.ajax({
+			        type: "POST",
+			        url: "login/LoginCheck",
+			        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			        cache: false,
+			        success: function(result){ alert("Query worked");}
+			    });
+				//window.location.href = "/" + strHostName + "/Home/Index";// @Url.Action("Index", "Home"); 
 			}
 			else {
 				$("#failure").css({ 'display': 'inline', 'color': '#ff0000' });
 			}
 		}
-	});*/
+	});
 
 	$("#signup").on('click', function () {
 		if($("#signupForm").valid())

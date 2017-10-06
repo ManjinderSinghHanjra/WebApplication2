@@ -4,7 +4,7 @@
 
 @if (user == null || user.Auth == false)
 {
-    Response.Redirect(Url.Action("LoginDetails", "Login", null));
+    Response.Redirect(Url.Action("Login", "Login", null));
 }
 else
 {

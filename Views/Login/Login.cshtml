@@ -48,7 +48,7 @@
                             <div id="emailFormGroup" class="form-group">
                                 <label for="emailLabel" style="color:white"><strong>Email ID</strong></label>
                                 <div id="temp" class="input-group">
-                                    <input name="email" id="email" type="text" class="form-control" placeholder="example" autofocus />
+                                    <input name="emailID" id="emailID" type="text" class="form-control" placeholder="example" autofocus />
                                     <span name="mailLabel" class="input-group-addon">@@intellect.org</span>
                                 </div>
                             </div>
@@ -60,8 +60,8 @@
                                 email and/or password is wrong! Try again.
                             </div>
                             <div class="btn-group btn-group-justified">
-                                <button id="signIn" type="submit" class="btn btn-primary" style="margin:4px">Login</button>
-                                <a href="@Url.Action("signup","Register")"><button type="button" class="btn btn-primary" style="margin:4px">Sign Up</button></a>
+                                <button id="signIn"  class="btn btn-primary" style="margin:4px">Login</button>
+                                <a href="@Url.Action("SignUp")"><button type="button" class="btn btn-primary" style="margin:4px">Sign Up</button></a>
                             </div>
                             <button type="button" class="btn btn-primary" style="margin:4px" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</button>
                         </form>
