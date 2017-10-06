@@ -1,0 +1,5 @@
+.outer_div{display: table; position: absolute; height: 100%; width: 100%;}
+.middle_div{display: table-cell; vertical-align: middle;}
+.inner_div{margin-left: auto; margin-right: auto; max-width:500px; width:100%; padding:35px;
+			box-shadow:10px 0px 40px 0px #000000;}
+.ui-datepicker{color: #000; z-index:100 !important;}

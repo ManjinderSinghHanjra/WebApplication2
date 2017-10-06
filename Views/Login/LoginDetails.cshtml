@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+    string strHostName = System.Configuration.ConfigurationManager.AppSettings["HostName"];
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intellect Corporation</title>
+
+    <script>
+        var strHostName = "@strHostName";
+    </script>
+
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/UserDefined/remodal.css")
+    @Styles.Render("~/Content/UserDefined/remodal-default-theme.css")
+    @Styles.Render("~/Content/UserDefined/login.css")
+    @Styles.Render("~/Content/UserDefined/validations.css")
+
+    @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/additional-methods.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
+    @Scripts.Render("~/Scripts/UserDefined/validations.js")
+    @Scripts.Render("~/Scripts/UserDefined/login.js")
+    @Scripts.Render("~/Scripts/UserDefined/remodal.js")
+</head>
+
+    <body>
+        <div class="outer_div">
+            <!-- Problem 1 -->
+            <div class="middle_div" style="background:#abb">
+                <div class="inner_div" style="background:#2c3e50">
+
+                    <div class="EnitreForm">
+                        <form id="loginForm" class="Form_width">
+                            <div class="page-header" style="margin-bottom: 20px;"> <h1 style="color:white">Intellect Corporations</h1> </div>
+                            <div id="emailFormGroup" class="form-group">
+                                <label for="emailLabel" style="color:white"><strong>Email ID</strong></label>
+                                <div id="temp" class="input-group">
+                                    <input name="email" id="email" type="text" class="form-control" placeholder="example" autofocus />
+                                    <span name="mailLabel" class="input-group-addon">@@intellect.org</span>
+                                </div>
+                            </div>
+                            <div id="passwordFormGroup" class="form-group">
+                                <label for="passwordLabel" style="color:white"><strong>Password</strong></label>
+                                <input name="password" id="password" type="password" class="form-control" placeholder="password" />
+                            </div>
+                            <div id="failure" style="display:none">
+                                email and/or password is wrong! Try again.
+                            </div>
+                            <div class="btn-group btn-group-justified">
+                                <button id="signIn" type="submit" class="btn btn-primary" style="margin:4px">Login</button>
+                                <a href="@Url.Action("signup","Register")"><button type="button" class="btn btn-primary" style="margin:4px">Sign Up</button></a>
+                            </div>
+                            <button type="button" class="btn btn-primary" style="margin:4px" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="ForgotPassLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ForgotPass">Forgot Password?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="forgotModalBody" class="modal-body">
+                        <div class="form forgotEmail" id="#forgotEmail">
+                            <input type="text" style="width:100%" placeholder="Enter registered email or phone" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="ContinueButton" type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="remodal-bg">
+            <div class="remodal" data-remodal-id="modal">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <h1>Message Sent!</h1>
+                <p>Information regarding password reset has been sent to your email-id/phone number.</p>
+                <br>
+                <button class="remodal-confirm" data-remodal-action="confirm">OK</button>
+            </div>
+        </div>
+
+    </body>
+</html>

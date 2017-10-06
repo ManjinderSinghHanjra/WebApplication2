@@ -1,0 +1,9 @@
+ textarea.invalid, input.invalid, select.invalid, select.error, textarea.error, input.error{
+	 color:#FF0000;
+	 }
+	 
+ .error{
+	 font: 15px "Montserrat", sans-serif;
+	 line-height: 1.7;
+	 color:#FF0000;
+ }

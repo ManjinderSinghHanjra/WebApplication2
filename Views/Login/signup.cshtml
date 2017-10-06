@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intellect Corporation</title>
+    @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/UserDefined/validations.js")
+    @Scripts.Render("~/Scripts/UserDefined/signup.js")
+
+    @Styles.Render("~/Content/jquery-ui.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/UserDefined/signup.css")
+    @Styles.Render("~/Content/UserDefined/validations.css")
+</head>
+<body>
+    <div class="outer_div">
+        <div class="middle_div" style="background:#abb">
+            <div class="inner_div" style="background:#2c3e50">
+                <div class="page-header"> <h1 style="color:white">Intellect Corporations</h1> </div>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label style="color:white"><strong>Name</strong></label>
+                        <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" autofocus />
+                        <br>
+                        <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white"><strong>Date of birth</strong></label>
+                        <input id="dob" name="dob" type="text" class="form-control" title="Select your dob" />
+                    </div>
+                    <div id="emailFormGroup" class="form-group">
+                        <label for="emailLabel" style="color:white"><strong>Email ID</strong></label>
+                        <div id="temp" class="input-group">
+                            <input name="email" type="text" class="form-control" placeholder="abc" autofocus>
+                            <span name="mailLabel" class="input-group-addon">@@intellect.org</span> </input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white"><strong>Password</strong></label>
+                        <input id="password" name="password" type="password" class="form-control" placeholder="password" />
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white"><strong>Confirm Password</strong></label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="password" />
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <a href="login.html"><button type="button" class="btn btn-primary">Back</button></a>
+                        <button id="signup" type="button" class="btn btn-primary">SignUp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
