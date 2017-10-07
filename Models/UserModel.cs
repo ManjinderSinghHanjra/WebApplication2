@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApplication2.Models
 {
-    public class UserModel
+    public class UserModel : IEquatable<UserModel>
     {
         private string name = "";
         private string dob = "";
@@ -41,5 +41,13 @@ namespace WebApplication2.Models
             get { return auth; }
             set { auth = value; }
         }
+
+        public bool Equals(UserModel user)
+        {
+            if (this.EmailID.Equals(user.EmailID))
+                return true;
+            return false;
+        }
+
     }
 }

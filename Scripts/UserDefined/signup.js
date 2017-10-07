@@ -27,10 +27,39 @@ $(document).ready(function () {
 	});
 
 
-	// SignUp form submission
 	$("#signUpSubmit").on('click', function () {
-		
+	    $.ajax({
+	        url: "Register",
+	        type: "POST",
+	        contentType: "application/x-www-urlencoded",
+	        data: "firstName=sd&lastName=sdasd&dob=assdsad&email=sadsada&password=asdasdas&confirmPassword=asdasdas",
+	        cache: false,
+	        async: true,
+	        success: function () {
+	            alert("Data sent successful");
+	        },
+	        error: function () {
+	            alert("Error Occured.");
+	        }
+	    });
+
+	    /*var httpRequest = new XMLHttpRequest();
+	    httpRequest.onreadystatechange = function () {
+	        if (httpRequest.readyState === XMLHttpRequest.DONE)
+	        {
+	            if (httpRequest.status === 200)
+	                alert("Everything's fine up untill now.");
+	                //alert(httpRequest.responseText);
+	        }
+            else
+	        alert("Error Occured with HTTPRequest");
+	    }
+	    httpRequest.open("POST", "/SignUp", true);
+	    httpRequest.setRequestHeader('Content-Type', 'application/x-www-urlencoded');
+	    httpRequest.send(); */
+
 	});
+
 
 
 	// Form validations

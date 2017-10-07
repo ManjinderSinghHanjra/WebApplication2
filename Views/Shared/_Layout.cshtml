@@ -1,5 +1,5 @@
 ﻿@{
-    var user = (WebApplication2.Models.UserModel)Session["User"];
+    var user = (WebApplication2.Models.UserModel)HttpContext.Current.Session["User"];
 }
 
 @if (user == null || user.Auth == false)
