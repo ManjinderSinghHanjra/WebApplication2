@@ -186,7 +186,6 @@
     <Content Include="Content\UserDefined\remodal-default-theme.css" />
     <Content Include="Content\UserDefined\remodal.css" />
     <Content Include="Content\UserDefined\signup.css" />
-    <Content Include="Content\UserDefined\validations.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -212,7 +211,6 @@
     <Content Include="Scripts\UserDefined\login.js" />
     <Content Include="Scripts\UserDefined\remodal.js" />
     <Content Include="Scripts\UserDefined\signup.js" />
-    <Content Include="Scripts\UserDefined\validations.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -242,7 +240,6 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
-    <Content Include="Views\Login\LoginCheck.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

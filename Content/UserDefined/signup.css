@@ -3,3 +3,12 @@
 .inner_div{margin-left: auto; margin-right: auto; max-width:500px; width:100%; padding:35px;
 			box-shadow:10px 0px 40px 0px #000000;}
 .ui-datepicker{color: #000; z-index:100 !important;}
+ textarea.invalid, input.invalid, select.invalid, select.error, textarea.error, input.error{
+	 color:#FF0000;
+	 }
+	 
+ .error{
+	 font: 15px "Montserrat", sans-serif;
+	 line-height: 1.7;
+	 color:#FF0000;
+ }

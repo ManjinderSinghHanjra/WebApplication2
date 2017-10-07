@@ -10,34 +10,62 @@ namespace WebApplication2.Controllers
 {
     public class LoginController : Controller
     {
+        const int CODE_0 = 0;
+        const int CODE_1 = 1;
+        const int CODE_2 = 2;
         string email = "admin";
         string pass = "admin";
         // GET: /Login/
-
+        [HttpGet]
         public ActionResult SignUp()
         {
             return View();
         }
-
-        public ActionResult Login()
+        [HttpPost]
+        public void SignUp(string firstName, string lastName, string dob, string password)
         {
+            UserModel user = new UserModel();
+            user.Name = firstName + " " + lastName;
+            user.Dob = dob;
+            user.Password = password;
+            RedirectToAction("Login");
+        }
+
+        public ActionResult Login(string emailID, string password)
+        {
+            switch(checkCredentials(emailID, password))
+            {
+                case CODE_0: return View();
+                    break; // For safety
+                case CODE_1: return Content("Username and/or password mismatch!");
+                    break; // For safety
+                case CODE_2: 
+                    System.Console.Write("Entered CODE_2. Redirecting...\n");
+                    RedirectToAction("Index", "Home");
+                    break;
+                default: return Content("Error Unknown/ Operation Not Supported");
+            }
             return View();
         }
 
-        public ActionResult LoginCheck(string emailID, string password)
+        private int checkCredentials(string emailID, string password)
         {
             UserModel tempUser = new UserModel();
-            tempUser = (UserModel)(@Session["user"]);
+            tempUser.EmailID= emailID;
+            tempUser.Password = password;
             tempUser.Auth = true;
-            System.Console.Write("Entered inside LoginCheck");
+            if(emailID == null || password == null)
+            {
+                return CODE_0;
+            }
             if (emailID.Equals("admin") && password.Equals("admin"))
             {
                 @Session["user"] = tempUser;
-                return RedirectToAction("Index", "Home");
+                return CODE_2;
             }
             else
             {
-                return Content("Sorry, email and/or password were incorrect! Try again.");
+                return CODE_1;
             }
         }
     }

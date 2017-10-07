@@ -8,10 +8,23 @@ namespace WebApplication2.Models
 {
     public class UserModel
     {
-        private string emailID = "admin";
-        private string password = "admin";
+        private string name = "";
+        private string dob = "";
+        private string emailID = "";
+        private string password = "";
         private bool auth = false;
 
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Dob
+        {
+            get { return dob; }
+            set { dob = value; }
+        }
         public string EmailID
         {
             get { return emailID; }

@@ -21,10 +21,11 @@ namespace WebApplication2
 
         protected void Session_Start(Object sender, EventArgs e)
         {
-            UserModel user = new UserModel();
+            UserModel user = null;
+            /*UserModel user = new UserModel();
             user.Auth = false;
             user.EmailID = "";
-            user.Password = "";
+            user.Password = "";*/
             HttpContext.Current.Session.Add("User", user);
         }
     }

@@ -1,43 +1,80 @@
 ﻿.popupBox {
-				display:none;
-				position: fixed;
-				width: 30%;
-				height: 40%;
-				margin-left: 16.5%;
-				margin-top: 4.5%;
-				background-color: white;
-				border: 2px solid black;
-				border-radius: 10px;
-				z-index: 10;
-			}
-			#overLay {
-				display:none;
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				background-color: #707070;
-				opacity: 0.7;
-				z-index: 9;
-				left: 0;
-				top: 0;
-			}
-			.outer_div{ display: table; position: absolute; height: 100%; width: 100%;}
-			.middle_div{display: table-cell; vertical-align: middle; background:#eee;}
-			.inner_div{margin-left: auto; margin-right: auto; max-width:600px; width:100%; padding:35px;
-						box-shadow: 20px 0px 40px 0px #000000; }
-						
-			.ConfirmationBox{ color:#101010; display:inline-block; text-align:center; background-color:#fff; position:absolute; z-index:-10;
-								 background-color: white;
-								 border: 2px solid black;
-								 border-radius: 10px;}
-@media (min-width: 576px) {
-	.jumbotron {
-		padding: 0px 0px 0px 0px !important;
-	}
+    display: none;
+    position: fixed;
+    width: 30%;
+    height: 40%;
+    margin-left: 16.5%;
+    margin-top: 4.5%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    z-index: 10;
 }
 
-	@media (max-width: 576px) {
-		.jumbotron {
-			padding: 0px 0px 0px 0px !important;
-		}
-	}
+#overLay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #707070;
+    opacity: 0.7;
+    z-index: 9;
+    left: 0;
+    top: 0;
+}
+
+.outer_div {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle_div {
+    display: table-cell;
+    vertical-align: middle;
+    background: #eee;
+}
+
+.inner_div {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 35px;
+    box-shadow: 20px 0px 40px 0px #000000;
+}
+
+.ConfirmationBox {
+    color: #101010;
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    z-index: -10;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding: 0px 0px 0px 0px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .jumbotron {
+        padding: 0px 0px 0px 0px !important;
+    }
+}
+
+textarea.invalid, input.invalid, select.invalid, select.error, textarea.error, input.error {
+    color: #FF0000;
+}
+
+.error {
+    font: 15px "Montserrat", sans-serif;
+    line-height: 1.7;
+    color: #FF0000;
+}

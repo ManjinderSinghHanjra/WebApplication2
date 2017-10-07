@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebApplication2.Models.UserModel
+@{
     Layout = null;
 }
 
@@ -16,19 +17,20 @@
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
     @Scripts.Render("~/Scripts/jquery-ui.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
-    @Scripts.Render("~/Scripts/UserDefined/validations.js")
     @Scripts.Render("~/Scripts/UserDefined/signup.js")
 
     @Styles.Render("~/Content/jquery-ui.css")
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/UserDefined/signup.css")
-    @Styles.Render("~/Content/UserDefined/validations.css")
 </head>
 <body>
     <div class="outer_div">
         <div class="middle_div" style="background:#abb">
             <div class="inner_div" style="background:#2c3e50">
                 <div class="page-header"> <h1 style="color:white">Intellect Corporations</h1> </div>
+                @{
+                    var signUpInfo = new Dictionary<String, object>();
+                }
                 <form id="signupForm">
                     <div class="form-group">
                         <label style="color:white"><strong>Name</strong></label>
@@ -57,8 +59,8 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <a href="login.html"><button type="button" class="btn btn-primary">Back</button></a>
-                        <button id="signup" type="button" class="btn btn-primary">SignUp</button>
+                        <button type="button" id="backButton" class="btn btn-primary">Back</button></a>
+                        <button type="submit" id="signUpSubmit" class="btn btn-primary">SignUp</button>
                     </div>
                 </form>
             </div>
