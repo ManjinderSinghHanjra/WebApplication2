@@ -60,7 +60,7 @@ $(document).ready(function () {
 
 
 	$("#signIn").on('click', function (e) {
-
+	    e.preventDefault();
 		if ($("#loginForm").valid()) {
 			var email = $("#emailID").val();
 			var pass = $("#password").val();
@@ -73,7 +73,8 @@ $(document).ready(function () {
 				cache: false,
 				async: true,
 				success: function (reply) {
-					alert(JSON.stringify(reply));
+				    alert(JSON.stringify(reply));
+				    window.location.href = "/" + strHostName + "/Home";
 				},
 				error: function (reply) {
 					alert(JSON.stringify(reply));
