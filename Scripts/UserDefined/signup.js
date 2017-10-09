@@ -78,7 +78,7 @@ $(document).ready(function () {
 		function (value, element) { return /^[A-Za-z0-9\d]+$/.test(value); }, "No special characters are allowed except @(at) .(dot) and _(underscore)");
 
 
-    $("#signUpForm").validate({
+    $("#signupForm").validate({
         rules: {
             firstName: {
                 required: true,
@@ -91,11 +91,17 @@ $(document).ready(function () {
                 maxlength: 32,
                 customNameValidator: true
             },
+            email: {
+                required: true,
+                minlength: 3,
+                maxlenght: 32,
+                customEmailValidator: true
+            },
             password: {
                 required: true,
                 minlength: 3,
                 maxlength: 32,
-                customEmailValidator: true
+                customPasswordValidator: true
             },
             confirmPassword: {
                 equalTo: "#password"
