@@ -10,64 +10,63 @@ namespace WebApplication2.Controllers
 {
     public class LoginController : Controller
     {
-        const int CODE_0 = 0;       // show login page, the user has been redirected from some other page that he/she might have stumbled upon accidentaly
-        const int CODE_1 = 1;       // username-password mismatch : Return the same View()
-        const int CODE_2 = 2;       // username-password matched  : Login Successful
+
+        /* There is a reason why I have created these constants, one may go for *bool* while writing functions, but give a thorough read to the code and try to understand
+         * the logic. My only motive was to reduce the LOC clutter and these constants have helped me to use switch instead of if-else statements with *boolean* evaluations.
+         */
+        const int INITIAL_REQ = -1;         // It's a guest and he's not logged in and was redirected to this page. The guests are not allowed to access the site unless they sign in.
+        const int NOTHING_MATCHED = 0;      // Username & Password, both haven't matched
+        const int USER_MATCHED = 1;         // Username matched
+        const int USER_PASS_MATCHED = 2;    // Username & Password matched!
+
         // GET: /Login/
         [HttpGet]
         public ActionResult SignUp()
         {
             return View();
         }
+
+
         [HttpPost]
-        public ActionResult SignUp(string firstName, string lastName, string dob, string email, string password)
+        public ActionResult SignUpSubmitDetails(UserModel user)
         {
-            UserModel user = new UserModel();
-            user.Name = firstName + " " + lastName;
-            user.Dob = dob;
-            user.EmailID = email;
-            user.Password = password;
-            Session["user"] = user;
-
-            //System.Console.Write(firstName + "" + lastName + "" + dob + "" + password);
-
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
-            System.Console.Write(" " + users.Contains(user).ToString());
             try
             {
-                if (users.Contains(user))
+                switch (user.Inside(users))
                 {
-                    return Content("Sorry, user already exists. If you are an existing user try logging in.");
-                }
-                else
-                {
-                    users.Add(user);
-                    HttpContext.Application["users"] = users;
-                    System.Console.Write("User created successfully");
-                    return RedirectToAction("Login");
+                    case USER_MATCHED:
+                    case USER_PASS_MATCHED:
+                        return Json("Sorry, user already exists. If you are an existing user try logging in.");
+                        break; // For safety
+                    default:
+                        users.Add(user);
+                        HttpContext.Application["users"] = users;
+                        return Json("Sign Up Successful!");
                 }
             }
             catch (Exception e)
             {
-                return Content("Some error has occured. Please try again later.");
+                return Json("Error Unknown!");
             }
         }
 
-        public ActionResult Login(string emailID, string password)
+        public ActionResult Login(string email, string password)
         {
-            switch (checkCredentials(emailID, password))
+            switch (checkCredentials(email, password))
             {
-                case CODE_0: return View();
+                case INITIAL_REQ: return View();
                     break; // For safety
-                case CODE_1: return Content("Username and/or password mismatch!");
+                case NOTHING_MATCHED:
+                case USER_MATCHED:
+                    return Json("Username and/or password mismatch!");
                     break; // For safety
-                case CODE_2:
+                case USER_PASS_MATCHED:
                     System.Console.Write("Entered CODE_2. Redirecting...\n");
-                    RedirectToRoute("Home");
+                    return Json("Sign In Successful! Redirecting You to the website...");
                     break;
-                default: return Content("Error Unknown/ Operation Not Supported");
+                default: return Json("Error Unknown/ Operation Not Supported");
             }
-            return View();
         }
 
         private int checkCredentials(string emailID, string password)
@@ -75,29 +74,12 @@ namespace WebApplication2.Controllers
             UserModel user = new UserModel();
             user.EmailID = emailID;
             user.Password = password;
-            string pass = "";
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
             if (emailID == null || password == null)
             {
-                return CODE_0;
+                return INITIAL_REQ;
             }
-            if (users.Contains(user))
-            {
-                foreach (UserModel temp in users)
-                {
-                    if (temp.Equals(user) && temp.Password == user.Password)
-                    {
-                        user.Auth = true;
-                        HttpContext.Session["user"] = user;
-                        return CODE_2;
-                    }
-                }
-                return CODE_1;
-            }
-            else
-            {
-                return CODE_1;
-            }
+            return user.Inside(users);
         }
     }
 }

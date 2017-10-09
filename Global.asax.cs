@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web;
 using WebApplication2.Models;
 
 namespace WebApplication2
@@ -22,14 +21,6 @@ namespace WebApplication2
             users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest", Password = "guest" });
             users.Add(new UserModel() { Name = "admin", Dob = "1-1-1", EmailID = "admin", Password = "admin" });
             System.Web.HttpContext.Current.Application["users"] = users;
-            //Application["users"] = users;
-            /*
-             * Better alernative to List approach as the Time Complexity is constant in dictionary lookup:
-             * To do: Later
-             * Dictionary<UserModel, String> users = new Dictionary<UserModel, string>();
-             * users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest" }, "guest");
-             * users.Add(new UserModel() { Name = "admin", Dob = "1-1-1", EmailID = "admin" }, "admin");
-             */
         }
 
         protected void Session_Start(Object sender, EventArgs e)
@@ -43,3 +34,13 @@ namespace WebApplication2
         }
     }
 }
+
+
+//Application["users"] = users;
+/*
+ * Better alernative to List approach as the Time Complexity is constant in dictionary lookup:
+ * To do: Later
+ * Dictionary<UserModel, String> users = new Dictionary<UserModel, string>();
+ * users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest" }, "guest");
+ * users.Add(new UserModel() { Name = "admin", Dob = "1-1-1", EmailID = "admin" }, "admin");
+ */

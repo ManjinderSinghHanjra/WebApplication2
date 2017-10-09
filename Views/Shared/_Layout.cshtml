@@ -1,13 +1,4 @@
-﻿@{
-    var user = (WebApplication2.Models.UserModel)HttpContext.Current.Session["User"];
-}
-
-@if (user == null || user.Auth == false)
-{
-    Response.Redirect(Url.Action("Login", "Login", null));
-}
-else
-{
+﻿
 
     <!DOCTYPE html>
     <html>
@@ -37,4 +28,3 @@ else
         @RenderSection("scripts", required: false)
     </body>
     </html>
-}

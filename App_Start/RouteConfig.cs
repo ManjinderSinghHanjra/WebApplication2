@@ -15,19 +15,13 @@ namespace WebApplication2
 
             routes.MapRoute(
                 name: "Home",
-                url: "Home/{action}",
+                url: "Home/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id= UrlParameter.Optional }
                 );
 
             routes.MapRoute(
-                name: "Register",
-                url: "Register",
-                defaults: new { controller = "Login", action = "SignUp", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "Login/{action}/{id}",
                 defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             );
         }
