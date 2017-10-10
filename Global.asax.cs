@@ -19,7 +19,10 @@ namespace WebApplication2
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             List<UserModel> users = new List<UserModel>();
             users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest", Password = "guest" });
-            users.Add(new UserModel() { Name = "admin", Dob = "1-1-1", EmailID = "admin", Password = "admin" });
+            users.Add(new UserModel() { Name = "admin0", Dob = "1-1-1", EmailID = "admin0", Password = "admin0" });
+            users.Add(new UserModel() { Name = "admin1", Dob = "1-1-1", EmailID = "admin1", Password = "admin1" });
+            users.Add(new UserModel() { Name = "admin2", Dob = "1-1-1", EmailID = "admin2", Password = "admin2" });
+            users.Add(new UserModel() { Name = "admin3", Dob = "1-1-1", EmailID = "admin3", Password = "admin3" });
             System.Web.HttpContext.Current.Application["users"] = users;
         }
 

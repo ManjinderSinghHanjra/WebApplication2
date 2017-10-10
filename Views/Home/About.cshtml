@@ -1,7 +1,34 @@
-﻿@{
+﻿@using WebApplication2.Models
+@model List<UserModel>
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+@Scripts.Render("~/Scripts/UserDefined/about.js")
+
+
+<br/>
+<table id="contactCenters" class="display" style="background-color: #c58836; position:relative;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Password</th>
+            <th>Authorized</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (UserModel user in Model)
+        {
+            <tr>
+                <td data-search=@user.Name>@user.Name</td>
+                <td>@user.Dob</td>
+                <td>@user.Password</td>
+                <td>@user.Auth.ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

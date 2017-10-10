@@ -47,7 +47,7 @@ namespace WebApplication2.Controllers
             }
             catch (Exception e)
             {
-                return Json("Error Unknown!");
+                return Json("Error Unknown!" + e.ToString());
             }
         }
 

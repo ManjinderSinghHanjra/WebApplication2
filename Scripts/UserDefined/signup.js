@@ -40,7 +40,7 @@ $(document).ready(function () {
             cache: false,
             async: true,
             success: function (reply) {
-                alert("Data sent successful \n" + JSON.stringify(reply));
+                alert("Data sent successfully! \n" + JSON.stringify(reply));
                 console.log(reply.Name);
             },
             error: function () {
