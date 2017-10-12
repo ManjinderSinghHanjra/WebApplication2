@@ -18,11 +18,11 @@ namespace WebApplication2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             List<UserModel> users = new List<UserModel>();
-            users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest", Password = "guest" });
-            users.Add(new UserModel() { Name = "admin0", Dob = "1-1-1", EmailID = "admin0", Password = "admin0" });
-            users.Add(new UserModel() { Name = "admin1", Dob = "1-1-1", EmailID = "admin1", Password = "admin1" });
-            users.Add(new UserModel() { Name = "admin2", Dob = "1-1-1", EmailID = "admin2", Password = "admin2" });
-            users.Add(new UserModel() { Name = "admin3", Dob = "1-1-1", EmailID = "admin3", Password = "admin3" });
+            for (int i = 0; i < 50; i++)
+            {
+                users.Add(new UserModel() { Name = (char)(i + 'a') + "_name", Dob = "1-1-" + (i+1900), EmailID = (char)(i+(int)'a') + "@gmail.com", Password = i + "_user" });
+            }
+                
             System.Web.HttpContext.Current.Application["users"] = users;
         }
 
@@ -35,6 +35,8 @@ namespace WebApplication2
             user.Password = "";*/
             HttpContext.Current.Session.Add("User", user);
         }
+
+        public string Password { get; set; }
     }
 }
 
@@ -47,3 +49,26 @@ namespace WebApplication2
  * users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest" }, "guest");
  * users.Add(new UserModel() { Name = "admin", Dob = "1-1-1", EmailID = "admin" }, "admin");
  */
+
+
+/*
+users.Add(new UserModel() { Name = "guest", Dob = "1-1-1", EmailID = "guest", Password = "guest" });
+            users.Add(new UserModel() { Name = "admin0", Dob = "1-2-1", EmailID = "admin0", Password = "admin0" });
+            users.Add(new UserModel() { Name = "admin1", Dob = "1-3-1", EmailID = "admin1", Password = "admin1" });
+            users.Add(new UserModel() { Name = "admin2", Dob = "1-4-1", EmailID = "admin2", Password = "admin2" });
+            users.Add(new UserModel() { Name = "admin3", Dob = "1-5-1", EmailID = "admin3", Password = "admin3" });
+            users.Add(new UserModel() { Name = "guest1", Dob = "1-1-19", EmailID = "guest", Password = "guest" });
+            users.Add(new UserModel() { Name = "admin0", Dob = "1-2-71", EmailID = "admin0", Password = "admin0" });
+            users.Add(new UserModel() { Name = "admin12", Dob = "1-3-091", EmailID = "admin1", Password = "admin1" });
+            users.Add(new UserModel() { Name = "admin23", Dob = "1-4-771", EmailID = "admin2", Password = "admin2" });
+            users.Add(new UserModel() { Name = "admin34", Dob = "21-5-1", EmailID = "admin3", Password = "admin3" });
+            users.Add(new UserModel() { Name = "guest25", Dob = "1-1-331", EmailID = "guest", Password = "guest" });
+            users.Add(new UserModel() { Name = "admin0", Dob = "1-2-441", EmailID = "admin0", Password = "admin0" });
+            users.Add(new UserModel() { Name = "admin17", Dob = "1-3-441", EmailID = "admin1", Password = "admin1" });
+            users.Add(new UserModel() { Name = "admin28", Dob = "1-4-122", EmailID = "admin2", Password = "admin2" });
+            users.Add(new UserModel() { Name = "admin39", Dob = "1-5-11", EmailID = "admin3", Password = "admin3" });
+            users.Add(new UserModel() { Name = "guest30", Dob = "1-1-771", EmailID = "guest", Password = "guest" });
+            users.Add(new UserModel() { Name = "admin0", Dob = "1-2-41", EmailID = "admin0", Password = "admin0" });
+            users.Add(new UserModel() { Name = "admin21", Dob = "1-3-61", EmailID = "admin1", Password = "admin1" });
+            users.Add(new UserModel() { Name = "admin32", Dob = "1-4-166", EmailID = "admin2", Password = "admin2" });
+            users.Add(new UserModel() { Name = "admin53", Dob = "1-5-414", EmailID = "admin3", Password = "admin3" }); */

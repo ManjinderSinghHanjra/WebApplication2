@@ -4,31 +4,45 @@
     ViewBag.Title = "About";
 }
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-@Scripts.Render("~/Scripts/UserDefined/about.js")
+@section styles{
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+}
 
-
-<br/>
-<table id="contactCenters" class="display" style="background-color: #c58836; position:relative;">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date of Birth</th>
-            <th>Password</th>
-            <th>Authorized</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach(UserModel user in Model)
-        {
+<br />
+<br />
+<br />
+<div>
+    <table id="contactCenters" style="background-color: #c58836; position:relative;">
+        <thead>
             <tr>
-                <td data-search=@user.Name>@user.Name</td>
-                <td>@user.Dob</td>
-                <td>@user.Password</td>
-                <td>@user.Auth.ToString()</td>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>EmailID</th>
+                <th>Password</th>
+                <th>Authorized</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <!--<tbody>
+            @@foreach (UserModel user in Model)
+            {
+                <tr>
+                    <td id="username" data-search=@@user.Name>@@user.Name</td>
+                    <td id="dob">@@user.Dob</td>
+                    <td id="emailID">@@user.EmailID</td>
+                    <td id="password">@@user.Password</td>
+                    <td>@@user.Auth.ToString()</td>
+                </tr>
+            }
+        </tbody>-->
+    </table>
+</div>
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script>
+    <script src="~/Scripts/UserDefined/about.js"></script>
+}

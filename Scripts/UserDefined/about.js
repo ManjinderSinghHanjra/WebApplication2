@@ -51,6 +51,46 @@ $(document).ready(function () {
     });
 });*/
 
+
+var strHostName = "DemoProject";
+
 $(document).ready(function () {
-    $("#contactCenters").DataTable();
+    //$.ajax({
+    //    url: "/" + strHostName + "/Home/Details",
+    //    type: "json",
+    //    success: function (reply) {
+    //        $("#contactCenters").DataTable({
+    //            data: reply,
+    //            columns: [
+    //                { 'data': "Name" },
+    //                { 'data': "Dob" },
+    //                { 'data': "EmailID" },
+    //                { 'data': "Password" },
+    //                { 'data': "Authorized" }
+    //            ],
+    //            "scrollY": "400px"
+    //        });
+    //    }
+    //});
+
+    $("#contactCenters").DataTable({
+        // ajax: "/" + strHostName + "/Home/Details",
+        "processing": true,
+        "serverSide": true,
+        columns: [
+                    { 'data': "Name" },
+                    { 'data': "Dob" },
+                    { 'data': "EmailID" },
+                    { 'data': "Password" },
+                    { 'data': "Auth" }
+        ],
+        "ajax": {
+            url: "/" + strHostName + "/Home/Details",
+            type: 'POST',
+            error: function (e, ts, et) {
+                alert(ts);
+            }
+        },
+        "scrollY": "400px"
+    });
 });

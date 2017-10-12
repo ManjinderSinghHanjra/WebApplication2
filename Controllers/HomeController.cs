@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,8 +17,16 @@ namespace WebApplication2.Controllers
 
         public ActionResult About()
         {
-            List<UserModel> users = new List<UserModel>();
-            return View(users);
+            //List<UserModel> users = (List<UserModel>)System.Web.HttpContext.Current.Application["users"];
+            //return View(users);
+            return View();
+        }
+
+        public ActionResult Details()  // Todo:
+        {
+            List<UserModel> users = (List<UserModel>)System.Web.HttpContext.Current.Application["users"];
+            var result = new { recordsTotal = users.Count, recordsFiltered = users.Count, data = users };
+            return Json(result);
         }
 
         public ActionResult Contact()
