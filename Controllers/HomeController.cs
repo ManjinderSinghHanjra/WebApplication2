@@ -16,6 +16,7 @@ namespace WebApplication2.Controllers
 
         static string previousSearchString = "";
         static List<UserModel> filteredResult = null;
+        const int RECORD_SIZE = 50;
         public ActionResult Index()
         {
             return View();
@@ -33,11 +34,14 @@ namespace WebApplication2.Controllers
              
             /* If you don't know what you're doing then, even minute changes or reordering can give you a hurt burn ;) */
             // if(searchParam == null || searchParam == "" || !searchParam.Equals(previousSearchString))
+            // huh! No more hurt burns. :D
+
+            if (length > RECORD_SIZE) length = RECORD_SIZE;
             if(start == 0)
             {
                 filteredResult = search(searchParam, start, length);
             }
-            var result = new { recordsTotal = 50, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, (start+length >= filteredResult.Count) ? (start+length-filteredResult.Count) : length) };
+            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, (start+length > filteredResult.Count) ? (start+length-filteredResult.Count) : length) };
             previousSearchString = searchParam;
             return Json(result);
         }
