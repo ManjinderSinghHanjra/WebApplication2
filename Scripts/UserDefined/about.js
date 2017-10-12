@@ -55,35 +55,10 @@ $(document).ready(function () {
 var strHostName = "DemoProject";
 
 $(document).ready(function () {
-    //$.ajax({
-    //    url: "/" + strHostName + "/Home/Details",
-    //    type: "json",
-    //    success: function (reply) {
-    //        $("#contactCenters").DataTable({
-    //            data: reply,
-    //            columns: [
-    //                { 'data': "Name" },
-    //                { 'data': "Dob" },
-    //                { 'data': "EmailID" },
-    //                { 'data': "Password" },
-    //                { 'data': "Authorized" }
-    //            ],
-    //            "scrollY": "400px"
-    //        });
-    //    }
-    //});
-
-    $("#contactCenters").DataTable({
-        // ajax: "/" + strHostName + "/Home/Details",
+    
+    var table = $("#contactCenters").DataTable({
         "processing": true,
         "serverSide": true,
-        columns: [
-                    { 'data': "Name" },
-                    { 'data': "Dob" },
-                    { 'data': "EmailID" },
-                    { 'data': "Password" },
-                    { 'data': "Auth" }
-        ],
         "ajax": {
             url: "/" + strHostName + "/Home/Details",
             type: 'POST',
@@ -91,6 +66,53 @@ $(document).ready(function () {
                 alert(ts);
             }
         },
+        columns: [
+                    { 'data': '' },
+                    {
+                        'data': "Name",
+                        'searchable': true
+                    },
+                    { 'data': "Dob" },
+                    { 'data': "EmailID" },
+                    {
+                        'data': "Password",
+                        'searchable': false,
+                        'orderable': false
+                    },
+                    { 'data': "Auth" }
+        ],
+        'columnDefs': [{
+            'targets': 0,
+            'searchable': false,
+            'orderable': false,
+            'className': 'dt-body-center select-checkbox',
+            'render': function (data, type, full, meta) {
+                return '<input type="checkbox" />';
+            },
+            select: {
+                style: 'os',
+                selector: 'td:first-child'
+            }
+        }],
         "scrollY": "400px"
+
     });
+
+    $('#parentCheckbox').on('click', function () {
+        var rows = table.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+    });
+
+
+    //$("#contactCenters").on('click', 'tr', function () {
+    //    if($(this).hasClass('selected'))
+    //    {
+    //        $(this).removeClass('selected');
+    //    }
+    //    else
+    //    {
+    //        $(this).addClass('selected');
+    //    }
+    //});
+    
 });
