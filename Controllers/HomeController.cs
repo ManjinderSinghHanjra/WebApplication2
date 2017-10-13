@@ -17,35 +17,13 @@ namespace WebApplication2.Controllers
         static string previousSearchString = "";
         static List<UserModel> filteredResult = null;
         const int RECORD_SIZE = 50;
+        const int SUCCESS     = 1;
+        const int FAILURE     = 0;
+        const int UNKNOWN     = -1;
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-
-        public ActionResult Details(int draw, int start, int length)  // Todo:
-        {  
-            string searchParam = Request.Params["search[value]"];
-             
-            /* If you don't know what you're doing then, even minute changes or reordering can give you a hurt burn ;) */
-            // if(searchParam == null || searchParam == "" || !searchParam.Equals(previousSearchString))
-            // huh! No more hurt burns. :D
-
-            if (length > RECORD_SIZE) length = RECORD_SIZE;
-            if(start == 0)
-            {
-                filteredResult = search(searchParam, start, length);
-            }
-            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, (start+length > filteredResult.Count) ? (start+length-filteredResult.Count) : length) };
-            previousSearchString = searchParam;
-            return Json(result);
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -54,14 +32,40 @@ namespace WebApplication2.Controllers
         }
 
 
+        /* ------------------------------------------------------------------------------------------------------------ */
+        public ActionResult About()
+        {
+            return View();
+        }
+
+
+        public ActionResult Details(int draw, int start, int length)  // Todo:
+        {
+            string searchParam = Request.Params["search[value]"];
+
+            /* If you don't know what you're doing then, even minute changes or reordering can give you a hurt burn ;) */
+            // if(searchParam == null || searchParam == "" || !searchParam.Equals(previousSearchString))
+            // huh! No more hurt burns. :D
+            // You spelled heart wrong. :}
+
+            if (length > RECORD_SIZE) length = RECORD_SIZE;
+            if (start == 0)
+            {
+                filteredResult = search(searchParam, start, length);
+            }
+            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, (start + length > filteredResult.Count) ? (start + length - filteredResult.Count) : length) };
+            previousSearchString = searchParam;
+            return Json(result);
+        }
+
         private List<UserModel> search(string searchParams, int start, int length)
         {
             List<UserModel> tempList = new List<UserModel>();
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
-            foreach(UserModel user in users)
+            foreach (UserModel user in users)
             {
                 Regex regex = new Regex(searchParams);
-                if(regex.IsMatch(user.EmailID))
+                if (regex.IsMatch(user.EmailID))
                 {
                     tempList.Add(user);
                 }
@@ -69,64 +73,64 @@ namespace WebApplication2.Controllers
             return tempList;
         }
 
+
+
+
+        /* ------------------------------------------------------------------------------------------------------------ */
+        public ActionResult ModifyRecord0(UserModel updateUser)
+        {
+            TempData["updateUser"] = updateUser;
+            return Json(new { result = "Redirect", url = "Home/ModifyRecord1" });
+        }
+        public ActionResult ModifyRecord1()
+        {
+            UserModel dummy = new UserModel();
+            dummy.EmailID = "dummy";
+            dummy.Name = "dummy";
+            dummy.Password = "dummyPassword";
+            dummy.Dob = "1 Jan 1995";
+            dummy.Auth = false;
+            TempData["updateUser"] = TempData["updateUser"] == null ? dummy : (UserModel)TempData["updateUser"];
+            return View(TempData["updateuser"]);
+        }
+        
+        [HttpPost]
+        public ActionResult ModifyRecord3(UserModel updateUser)
+        {
+            return Json("Record Update- Status: " + Status(modify(updateUser)) + "!");
+        }
+
+        private int modify(UserModel updateUser)
+        {
+            try
+            {
+                List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
+                for (int i = 0; i < users.Count; i++ )
+                {
+                    if (users[i].EmailID.Equals(updateUser.EmailID))
+                    {
+                        users[i] = updateUser;
+                    }
+                }
+                return SUCCESS;
+            } catch(Exception e)
+            {
+                Console.Write(e);
+                return FAILURE;
+            }
+                //return UNKNOWN;
+        }
+
+        private string Status(int status)
+        {
+            switch(status)
+            {
+                case UNKNOWN: return "UNKNWON";
+                case FAILURE: return "FAILURE";
+                case SUCCESS: return "SUCCESS";
+            }
+            return "UNKNWON";
+        }
+
     }
 }
-
-
-
-/*
- * Incomplete:
- * Implementation to apply operations <Search, SortByColumnName, & SortingDirection>
- * on the Stored Data (List).
- */
-
- /* public ActionResult Details(DataTableModel dataTable)
-        {
-            List<UserModel> filteredUsers = search(dataTable);
-            return Json(new { data = filteredUsers } );
-        }
-
-        private List<UserModel> search(DataTableModel dataTable)
-        {
-            /*var searchString   = dataTable.search == null ? dataTable.search.value : "";
-            var orderByCol   = dataTable.order  == null ? dataTable.order[0].column : 0;
-            var orderDirection = dataTable.order  == null ? dataTable.order[0].dir.ToLower() : "asc";
-
-            return (fetchDataInList(searchString, orderByCol, orderDirection));
-        }
-
-        private List<UserModel> fetchDataInList(string searchString, int orderByCol, string orderDirection)
-        {
-            List<UserModel> users = (List<UserModel>)System.Web.HttpContext.Current.Application["users"];
-            List<UserModel> temp  = new List<UserModel>();
-            Regex regex = new Regex(searchString);
-            foreach(UserModel user in users)
-            {
-                if(regex.IsMatch(user.EmailID))
-                {
-                    temp.Add(user);
-                }
-            }
-
-            switch(orderByCol)
-            {
-                case 0:
-                    temp = temp.
-                    break;
-                case :1
-                    temp = temp.OrderBy(o => o.Dob);
-                    break;
-                case 2:
-                    temp = temp.OrderBy(o => o.EmailID);
-                    break;
-                case 3:
-                    temp = temp.OrderBy(o => o.Password);
-                    break;
-                case 4:
-                    temp = temp.OrderBy(o => o.Auth);
-                    break;
-            }
-            
-            return temp;
-
-        }*/

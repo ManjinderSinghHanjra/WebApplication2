@@ -211,6 +211,7 @@
     <Content Include="Scripts\UserDefined\home.js" />
     <Content Include="Scripts\UserDefined\jquery-loader.js" />
     <Content Include="Scripts\UserDefined\login.js" />
+    <Content Include="Scripts\UserDefined\modifyRecords.js" />
     <Content Include="Scripts\UserDefined\remodal.js" />
     <Content Include="Scripts\UserDefined\signup.js" />
     <Content Include="Scripts\_references.js" />
@@ -242,6 +243,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Home\ModifyRecord1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

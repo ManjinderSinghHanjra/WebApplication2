@@ -29,14 +29,12 @@ $(document).ready(function () {
 
     $("#signUpSubmit").on('click', function (e) {
         e.preventDefault();
-        var fName = "abc";
         var json = '{"user":{"Name": "fName", "Dob": "dob", "EmailID": "email", "Password":"password"}}';
         $.ajax({
             url: "/" + strHostName + "/Login/SignUpSubmitDetails",
             type: "POST",
-            contentType: "application/json; charset:utf-8",
+            contentType: "application/json; charset=utf-8",
             data: json,
-            //  data: '{"user": "'+fName+'"}',
             cache: false,
             async: true,
             success: function (reply) {
@@ -47,22 +45,6 @@ $(document).ready(function () {
                 alert("Error Occured.");
             }
         });
-
-        /*var httpRequest = new XMLHttpRequest();
-	    httpRequest.onreadystatechange = function () {
-	        if (httpRequest.readyState === XMLHttpRequest.DONE)
-	        {
-	            if (httpRequest.status === 200)
-	                alert("Everything's fine up untill now.");
-	                //alert(httpRequest.responseText);
-	        }
-            else
-	        alert("Error Occured with HTTPRequest");
-	    }
-	    httpRequest.open("POST", "/SignUp", true);
-	    httpRequest.setRequestHeader('Content-Type', 'application/x-www-urlencoded');
-	    httpRequest.send(); */
-
     });
 
 

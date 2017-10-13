@@ -1,0 +1,50 @@
+﻿@using WebApplication2.Models
+@model UserModel
+@{
+    ViewBag.Title = "Modify Record";
+}
+
+@Scripts.Render("~/Scripts/jquery.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery-ui.js")
+@Scripts.Render("~/Scripts/bootstrap.min.js")
+@Scripts.Render("~/Scripts/UserDefined/modifyRecords.js")
+
+@Styles.Render("~/Content/jquery-ui.css")
+@Styles.Render("~/Content/bootstrap.min.css")
+@Styles.Render("~/Content/UserDefined/signup.css")
+
+<body>
+    <div class="outer_div">
+        <div class="middle_div" style="background:#abb">
+            <div class="inner_div" style="background:#2c3e50">
+                <form id="modifyForm">
+                    <div class="form-group">
+                        <label style="color:white"><strong>Name</strong></label>
+                        <input id="firstName" name="firstName" type="text" class="form-control" value=@Model.Name placeholder="First Name" autofocus />
+                        <br>
+                        <input id="lastName" name="lastName" type="text" class="form-control" value=@Model.Name placeholder ="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white"><strong>Date of birth</strong></label>
+                        <input id="dob" name="dob" type="text" class="form-control" title="Select your dob" value=@Model.Dob />
+                    </div>
+                    <div id="emailFormGroup" class="form-group">
+                        <label for="emailLabel" style="color:white"><strong>Email ID</strong></label>
+                        <div id="temp" class="input-group">
+                            <input name="email" type="text" class="form-control" placeholder="abc" value=@Model.EmailID readonly/>
+                            <span class="input-group-addon">@@intellect.org</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white"><strong>Password</strong></label>
+                        <input id="password" name="password" type="password" class="form-control" value=@Model.Password placeholder="password" />
+                    </div>
+                    <div>
+                        <button id="buttonUpdateRecords" class="btn btn-info">Update Records</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
