@@ -87,37 +87,28 @@ $(document).ready(function () {
      */
     $("#contactCenters").on('click', 'tr', function () {
         // Todo: Make row selection from multiple to single.
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-            $("#updateSelected").css('display', 'none');
-
+        $(this).addClass('selected');
+        var checkbox = table.row(this).data();    
+        if (checkbox.checked == true) {
         }
         else {
-            $(this).addClass('selected');
+            
             var rowdata = JSON.stringify(table.row(this).data());
-
-            $("#updateSelected").css('display', 'inline');
-
-
-            // To update the row selected, a new View will be fetched.
-            $("#contactCenters_length").on('click', '#updateSelected', function (e) {
-                $.ajax({
-                    url: "/" + strHostName + "/home/ModifyRecord0",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    data: rowdata,
-                    cache: false,
-                    async: true,
-                    success: function (reply) {
-                        if (reply.result == 'Redirect')
-                            window.location.href = "/" + strHostName + "/" +reply.url;
-                    },
-                    error: function (reply) {
-                        alert("error in ajax call: " + JSON.stringify(reply));
-                    }
-                });
+            $.ajax({
+                url: "/" + strHostName + "/home/ModifyRecord0",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: rowdata,
+                cache: false,
+                async: true,
+                success: function (reply) {
+                    if (reply.result == 'Redirect')
+                        window.location.href = "/" + strHostName + "/" + reply.url;
+                },
+                error: function (reply) {
+                    alert("error in ajax call: " + JSON.stringify(reply));
+                }
             });
-
         }
     });
 

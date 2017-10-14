@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
 
         static string previousSearchString = "";
         static List<UserModel> filteredResult = null;
-        const int RECORD_SIZE = 50;
+        static int RECORD_SIZE = 50;
         const int SUCCESS     = 1;
         const int FAILURE     = 0;
         const int UNKNOWN     = -1;
@@ -53,7 +53,10 @@ namespace WebApplication2.Controllers
             {
                 filteredResult = search(searchParam, start, length);
             }
-            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, (start + length > filteredResult.Count) ? (start + length - filteredResult.Count) : length) };
+
+            start = start > filteredResult.Count ? filteredResult.Count-1 : start;
+            int range = (start + length) >= filteredResult.Count ? (filteredResult.Count - 1 - start) : length;
+            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, range) };
             previousSearchString = searchParam;
             return Json(result);
         }
@@ -70,7 +73,9 @@ namespace WebApplication2.Controllers
                     break;
                 }
             }
+            RECORD_SIZE = users.Count;
             HttpContext.Application["users"] = users;
+            filteredResult = (List<UserModel>)HttpContext.Application["users"];
         }
 
         private List<UserModel> search(string searchParams, int start, int length)
