@@ -1,7 +1,7 @@
 ﻿var strHostName = "DemoProject";
 
 $(document).ready(function () {
-
+   
     var table = $("#contactCenters").DataTable({
         "processing": true,
         "serverSide": true,
@@ -14,7 +14,6 @@ $(document).ready(function () {
         },
         columns: [
                     // Todo:  Fix column[0] row[0] issue
-                    { 'data': '' },
                     { 'data': '' },
                     {
                         'data': "Name",
@@ -45,8 +44,6 @@ $(document).ready(function () {
         "scrollY": "400px"
 
     });
-
-
     /* PARENT_CHECKBOX */
     $('#parentCheckbox').on('click', function () {
         var rows = table.rows({ 'search': 'applied' }).nodes();
@@ -60,26 +57,29 @@ $(document).ready(function () {
 
     /* DELETE_BUTTON: Delete the records that are selected while syncing with the server. */
     $("#contactCenters_length").on('click', '#deleteSelected', function (e) {
-        var data = [];
+        //var data = { "page": table.page.info().page, 'index': 1 };
+
+        var data;
         var allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
         console.log(allCheckBoxes);
-        for (var i = 3; i < allCheckBoxes.length; i++) {
+        for (var i = 2; i < allCheckBoxes.length; i++) {
             var checkBox = allCheckBoxes[i];
             if (checkBox.checked == true) {
-                data.push(table.row(checkBox.parentNode).data());
+                //data['index'] = table.row(checkBox.parentNode).index();
+                data = JSON.stringify(table.row(checkBox.parentNode).data());
                 $.ajax({
-                    url: "/" + strHostName + "Home/About",
+                    url: "/" + strHostName + "/Home/Delete",         // Todo: proper route   ----- DONE
                     type: "POST",
                     data: data,
                     contentType: "application/json; charset=utf-8",
                     async: true,
                     cache: false,
-                    success: function (reply) { console.log(reply); },
-                    failure: function (reply) { console.log(reply); }
+                    success: function (reply) {
+                        table.ajax.reload().draw();
+                    },
+                    failure: function () { console.log("error"); }
                 });
-                var row = checkBox.parentNode.parentNode;
-                row.parentNode.removeChild(row);
-                // Todo: Sync delete operation with the server.
+                // Todo: Sync delete operation with the server. ---- -- DONE
             }
         }
     });

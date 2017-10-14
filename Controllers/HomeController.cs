@@ -58,6 +58,21 @@ namespace WebApplication2.Controllers
             return Json(result);
         }
 
+        [HttpPost]
+        public void Delete(UserModel deleteUser)
+        {
+            List<UserModel> users = (List<UserModel>) HttpContext.Application["users"];
+            foreach(UserModel user in users)
+            {
+                if(user.EmailID.Equals(deleteUser.EmailID))
+                {
+                    users.Remove(user);
+                    break;
+                }
+            }
+            HttpContext.Application["users"] = users;
+        }
+
         private List<UserModel> search(string searchParams, int start, int length)
         {
             List<UserModel> tempList = new List<UserModel>();
