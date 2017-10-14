@@ -14,7 +14,7 @@ namespace WebApplication2.Controllers
     public class HomeController : Controller
     {
 
-        static string previousSearchString = "";
+        static string previousSearchString = "drupakas";
         static List<UserModel> filteredResult = null;
         static int RECORD_SIZE = 50;
         const int SUCCESS     = 1;
@@ -42,13 +42,6 @@ namespace WebApplication2.Controllers
         public ActionResult Details(int draw, int start, int length)  // Todo:
         {
             string searchParam = Request.Params["search[value]"];
-
-            /* If you don't know what you're doing then, even minute changes or reordering can give you a hurt burn ;) */
-            // if(searchParam == null || searchParam == "" || !searchParam.Equals(previousSearchString))
-            // huh! No more hurt burns. :D
-            // You spelled heart wrong. :}
-
-            if (length > RECORD_SIZE) length = RECORD_SIZE;
             if (start == 0 || !searchParam.Equals(previousSearchString))
             {
                 filteredResult = search(searchParam, start, length);
@@ -59,13 +52,6 @@ namespace WebApplication2.Controllers
             var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, range) };
             previousSearchString = searchParam;
             return Json(result);
-
-
-            //filteredResult = search(searchParam, start, length);
-            //start = start >= filteredResult.Count ? filteredResult.Count : start;
-            //int range = (start + length) >= filteredResult.Count ? (filteredResult.Count - start) : length;
-            //var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, range) };
-            //return Json(result);
 
         }
 

@@ -1,7 +1,7 @@
 var b1 = 0, b2 = 0, b3 = 0;
 $(document).ready(function () {
 
-	$("#ReadMoreButton1").click(function () {
+	/*$("#ReadMoreButton1").click(function () {
 		 b1 = Math.abs(b1 - 1);
 		 var parentDiv = $(this).parent('div');
 		 if( b1 === 0 )
@@ -51,5 +51,5 @@ $(document).ready(function () {
 				"box-shadow": "0px 0px 0px 0px #001e33"
 			});
 		 }
-	});
+	});*/
 });
