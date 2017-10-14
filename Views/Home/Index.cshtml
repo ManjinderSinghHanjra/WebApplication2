@@ -2,21 +2,16 @@
 	ViewBag.Title = "Home Page";
 }
 
-<div id="scienceCarousel" class="carousel slide container-fluid" data-ride="carousel" data-interval="2000" style="padding-left: 0px; padding-right: 0px;">
+@*<div id="scienceCarousel" class="carousel slide container-fluid" data-ride="carousel" data-interval="2000" style="padding-left: 0px; padding-right: 0px;">
 	<ol class="carousel-indicators">
 		<li data-slide-to="0" class="active" data-target="#scienceCarousel"></li>
 		<li data-slide-to="1" data-target="#scienceCarousel"></li>
 		<li data-slide-to="2" data-target="#scienceCarousel"></li>
 	</ol>
-	<div class="carousel-inner" role="listbox" style="width:100%;
-															height:400px;">
+	<div class="carousel-inner" role="listbox" style="width:100%;height:400px;">
 		<div class="carousel-item active">
 			<img class="carouselImg d-block img-fluid image-responsive center-block" src="~/Content/Images/carousel1.jpg" style="height:100%" alt="First slide" />
-			<div class="header-text " style="position:absolute;
-					left:0px;
-					-webkit-text-stroke-width: 1px;
-					-webkit-text-stroke-color: black;">
-				<div class="col-md-12 text-center">
+				<div class="carousel-caption">
 					<h2>
 						<span><strong>Embedding Quantum Simulator Screenshots</strong></span>
 					</h2>
@@ -30,7 +25,6 @@
 						<a class="btn btn-primary" href="#">Details</a>
 					</div>
 				</div>
-			</div>
 		</div>
 		<div class="carousel-item">
 			<img class="carousel-img d-block img-fluid image-responsive center-block" src="~/Content/Images/proteinSynthesis.png" style="height:100%" alt="Second slide" />
@@ -47,6 +41,53 @@
 		<span class="carousel-control-next-icon" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 	</a>
+</div>*@
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="la.jpg" alt="Chania">
+            <div class="carousel-caption">
+                <h3>Los Angeles</h3>
+                <p>LA is always so much fun!</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="chicago.jpg" alt="Chicago">
+            <div class="carousel-caption">
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="ny.jpg" alt="New York">
+            <div class="carousel-caption">
+                <h3>New York</h3>
+                <p>We love the Big Apple!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 
@@ -75,7 +116,7 @@
 
 <div class="container-fluid Blog-Post-Container">
 	<div class="blogPost Blog-Post-Color mt-5">
-        <ul class="list-unstyled" style="background-color: #001e33">
+        <ul class="list-unstyled" style="background-color: #1d333d">
             <li style="padding-left: 5px; padding-top: 1px; border-bottom: solid">
                 <h2>Research Insights</h2>
             </li>
@@ -93,7 +134,7 @@
                     </p>
                     <a href="#Anisotropic-Collapse-Content" id="ReadMoreButton1" class="btn btn-primary Blog-Button" data-toggle="collapse" aria-expanded="false">Read More</a>
                     <div class="collapse" id="Anisotropic-Collapse-Content">
-                        <div class="card card-block" style="background-color: #001e33;">
+                        <div class="card card-block" style="background-color: #1d333d;">
                             Quantum spin liquids have fascinated condensed matter physicists for decades because of their
                             unusual properties such as spin fractionalization and long-range entanglement. Unlike conventional
                             symmetry breaking the topological order underlying quantum spin liquids is hard to detect experimentally.
@@ -125,7 +166,7 @@
                     </p>
                     <a href="#Condensed-Collapse-Content" id="ReadMoreButton2" class="btn btn-primary Blog-Button" data-toggle="collapse" aria-expanded="false">Read More</a>
                     <div class="collapse" id="Condensed-Collapse-Content">
-                        <div class="card card-block" style="background-color: #001e33;">
+                        <div class="card card-block" style="background-color: #1d333d;">
                             Two-particle correlations are one of the tools to investigate heavy-ion collisions and its collective effects.
                             Azimuthal anisotropies of particles produced in such collisions are one of the signatures of Quark Gluon
                             Plasma (QGP). QGP is very hot and dense state of matter, where quarks and gluons are deconfined.
@@ -155,7 +196,7 @@
                     </p>
                     <a href="#Nucleic-Collapse-Content" id="ReadMoreButton3" class="btn btn-primary Blog-Button" data-toggle="collapse" aria-expanded="false">Read More</a>
                     <div class="collapse" id="Nucleic-Collapse-Content">
-                        <div class="card card-block" style="background-color: #001e33;">
+                        <div class="card card-block" style="background-color: #1d333d;">
                             Despite the computational advantages that coarse-grained (CG) models can provide to the study
                             of biological and soft matter systems [1], a consistent all-atom representation of their results is
                             required in a vast number of cases. The validation of their predictions against data obtained from
