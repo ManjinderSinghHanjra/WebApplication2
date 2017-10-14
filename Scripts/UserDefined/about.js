@@ -13,7 +13,6 @@ $(document).ready(function () {
             }
         },
         columns: [
-                    // Todo:  Fix column[0] row[0] issue
                     { 'data': '' },
                     {
                         'data': "Name",
@@ -57,18 +56,15 @@ $(document).ready(function () {
 
     /* DELETE_BUTTON: Delete the records that are selected while syncing with the server. */
     $("#contactCenters_length").on('click', '#deleteSelected', function (e) {
-        //var data = { "page": table.page.info().page, 'index': 1 };
-
         var data;
         var allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
         console.log(allCheckBoxes);
         for (var i = 2; i < allCheckBoxes.length; i++) {
             var checkBox = allCheckBoxes[i];
             if (checkBox.checked == true) {
-                //data['index'] = table.row(checkBox.parentNode).index();
                 data = JSON.stringify(table.row(checkBox.parentNode).data());
                 $.ajax({
-                    url: "/" + strHostName + "/Home/Delete",         // Todo: proper route   ----- DONE
+                    url: "/" + strHostName + "/Home/Delete",
                     type: "POST",
                     data: data,
                     contentType: "application/json; charset=utf-8",
@@ -79,7 +75,6 @@ $(document).ready(function () {
                     },
                     failure: function () { console.log("error"); }
                 });
-                // Todo: Sync delete operation with the server. ---- -- DONE
             }
         }
     });
