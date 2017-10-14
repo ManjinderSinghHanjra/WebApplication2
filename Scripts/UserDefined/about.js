@@ -102,15 +102,15 @@ $(document).ready(function () {
             // To update the row selected, a new View will be fetched.
             $("#contactCenters_length").on('click', '#updateSelected', function (e) {
                 $.ajax({
-                    url: "/" + strHostName + "/home/ModifyRecord1",
+                    url: "/" + strHostName + "/home/ModifyRecord0",
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     data: rowdata,
                     cache: false,
-                    async: false,
+                    async: true,
                     success: function (reply) {
                         if (reply.result == 'Redirect')
-                            window.location.href = "/" + strHostName + reply.url;
+                            window.location.href = "/" + strHostName + "/" +reply.url;
                     },
                     error: function (reply) {
                         alert("error in ajax call: " + JSON.stringify(reply));

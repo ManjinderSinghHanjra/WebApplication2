@@ -11,28 +11,6 @@ function fillUpTheForm(reply)
 
 $(document).ready( function(){
 
-
-	$("buttonUpdateRecords").on('click', function () {
-	    var json = '{"user":{"Name": "firstName", "Dob": "dob", "EmailID": "email", "Password":"password"}}';
-	    $.ajax({
-			url: "/" + strHostName + "/Home/ModifyRecord3",
-			type: "POST",
-			contentType: "application/json; charset=utf-8",
-			data: json,
-			async: true,
-			cache: false,
-			success: function (reply) {
-				alert(reply.responseText());
-			},
-			error: function (reply) {
-			    alert(reply.responseText());
-			}
-		});
-	});
-
-
-
-
 	jQuery.validator.addMethod("customNameValidator",
 		function (value, element) { return /^[a-zA-Z]+$/.test(value); }, "Only alphabets are allowed.");
 	jQuery.validator.addMethod("customName2Validator",
@@ -82,4 +60,25 @@ $(document).ready( function(){
 			}
 		},
 	});
+
+
+
+	$("buttonUpdateRecords").on('click', function () {
+		var json = '{"user":{"Name": "firstName", "Dob": "dob", "EmailID": "email", "Password":"password"}}';
+		$.ajax({
+			url: "/" + strHostName + "/Home/ModifyRecord3",
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			data: json,
+			async: true,
+			cache: false,
+			success: function (reply) {
+				alert(reply);
+			},
+			error: function (reply) {
+				alert(reply);
+			}
+		});
+	});
+
 });

@@ -30,6 +30,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult SignUpSubmitDetails(UserModel user)
         {
+            // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
             try
             {
