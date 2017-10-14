@@ -20,7 +20,7 @@ namespace WebApplication2
             List<UserModel> users = new List<UserModel>();
             for (int i = 0; i < 50; i++)
             {
-                users.Add(new UserModel() { Name = (char)(i + 'a') + "_name", Dob = "1-1-" + (i+1900), EmailID = (char)(i+(int)'a') + "@gmail.com", Password = i + "_user" });
+                users.Add(new UserModel() { Name = (char)(i + 'a') + "Name", Dob = "1-1-" + (i+1900), EmailID = (char)(i+(int)'a') + "@gmail.com", Password = i + "Password" });
             }
                 
             System.Web.HttpContext.Current.Application["users"] = users;
