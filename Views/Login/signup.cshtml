@@ -18,9 +18,12 @@
     @Scripts.Render("~/Scripts/jquery-ui.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
     @Scripts.Render("~/Scripts/UserDefined/signup.js")
+    @Scripts.Render("~/Scripts/UserDefined/remodal.js")
 
     @Styles.Render("~/Content/jquery-ui.css")
     @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/UserDefined/remodal.css")
+    @Styles.Render("~/Content/UserDefined/remodal-default-theme.css")
     @Styles.Render("~/Content/UserDefined/signup.css")
 </head>
 <body>
@@ -61,6 +64,15 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="remodal-bg">
+        <div class="remodal" data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <h1>Registration Status</h1>
+            <p id="modalText"></p>
+            <br>
+            <button class="remodal-confirm" data-remodal-action="confirm">OK</button>
         </div>
     </div>
 </body>

@@ -31,6 +31,17 @@ namespace WebApplication2.Controllers
         public ActionResult SignUpSubmitDetails(UserModel user)
         {
             // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
+            
+            /* Note:
+             *      Don't change the order of the conditions put inside if() clause, we first need to check if elements are null or not null, 
+             *      only then we can proceed with the other conditions.
+             */
+            if (user == null || user.EmailID == null || user.Dob == null || user.Name == null || user.Password == null ||
+                user.EmailID.Equals("") || user.Dob.Equals("") || user.Name.Equals("") || user.Password.Equals("")
+                )
+            {
+                return Json("We don't accept forms that are empty or with any of the missing fields except LastName.");
+            }
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
             try
             {

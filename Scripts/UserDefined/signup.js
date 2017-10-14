@@ -1,4 +1,12 @@
 var strHostName = "DemoProject";
+
+function Remodal(text) {
+    var remodal = $('[data-remodal-id=modal]').remodal();
+    $("#modalText").html(text);
+    remodal.open();
+};
+
+
 $(document).ready(function () {
 
 
@@ -38,15 +46,13 @@ $(document).ready(function () {
 			cache: false,
 			async: true,
 			success: function (reply) {
-				alert("Data sent successfully! \n" + JSON.stringify(reply));
-				console.log(reply.Name);
+				Remodal(JSON.stringify(reply));
 			},
-			error: function () {
-				alert("Error Occured.");
+			error: function (reply) {
+				Remodal(JSON.stringify(reply));
 			}
 		});
 	});
-
 
 
 	// Form validations

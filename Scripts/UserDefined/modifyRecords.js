@@ -63,8 +63,9 @@ $(document).ready( function(){
 
 
 
-	$("buttonUpdateRecords").on('click', function () {
-		var json = '{"user":{"Name": "firstName", "Dob": "dob", "EmailID": "email", "Password":"password"}}';
+	$("buttonUpdateRecords").on('click', function (e) {
+	    e.preventDefault();
+		var json = {"Name": $("#firstName").val(), "Dob": $("#dob").val(), "EmailID": $("#email").val(), "Password": $("#password").val()};
 		$.ajax({
 			url: "/" + strHostName + "/Home/ModifyRecord3",
 			type: "POST",
