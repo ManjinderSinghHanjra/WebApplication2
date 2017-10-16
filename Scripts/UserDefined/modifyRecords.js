@@ -1,29 +1,8 @@
 ﻿var strHostName = "DemoProject";
 
-function fillUpTheForm(reply)
-{
-	$("#firstName").html = reply.Name;
-	$("#lastName").html = reply.Name;
-	$("#dob").html = reply.Dob;
-	$("#email").html = reply.Email;
-	$("#password").html = reply.Password;
-}
-
 $(document).ready( function(){
 
-	jQuery.validator.addMethod("customNameValidator",
-		function (value, element) { return /^[a-zA-Z]+$/.test(value); }, "Only alphabets are allowed.");
-	jQuery.validator.addMethod("customName2Validator",
-		function (value, element) { return /^[a-zA-Z\s]+$/.test(value); }, "Only alphabets are allowed.");
-
-	jQuery.validator.addMethod("customEmailValidator",
-		function (value, element) { return /^[a-zA-Z0-9\d\@._]+$/.test(value); }, 'No special characters are allowed except @(at) .(dot) and _(underscore)');
-
-	jQuery.validator.addMethod("customPasswordValidator",
-		function (value, element) { return /^[A-Za-z0-9\d]+$/.test(value); }, "No special characters are allowed except @(at) .(dot) and _(underscore)");
-
-
-	$("#modifyForm").validate({
+    $("#modifyForm").validate({
 		rules: {
 			firstName: {
 				required: true,
@@ -58,16 +37,29 @@ $(document).ready( function(){
 				minlength: "At least 4 password characters",
 				maxlength: "At most 32 password characters"
 			}
-		},
-	});
+		}
+    });
+
+
+    jQuery.validator.addMethod("customNameValidator",
+		function (value, element) { return /^[a-zA-Z]+$/.test(value); }, "Only alphabets are allowed.");
+    jQuery.validator.addMethod("customName2Validator",
+		function (value, element) { return /^[a-zA-Z\s]+$/.test(value); }, "Only alphabets are allowed.");
+
+    jQuery.validator.addMethod("customEmailValidator",
+		function (value, element) { return /^[a-zA-Z0-9\d\@._]+$/.test(value); }, 'No special characters are allowed except @(at) .(dot) and _(underscore)');
+
+    jQuery.validator.addMethod("customPasswordValidator",
+		function (value, element) { return /^[A-Za-z0-9\d]+$/.test(value); }, "No special characters are allowed except @(at) .(dot) and _(underscore)");
 
 
 
-	$("buttonUpdateRecords").on('click', function (e) {
+	$("#buttonUpdateRecords").on('click', function (e) {
 	    e.preventDefault();
-		var json = {"Name": $("#firstName").val(), "Dob": $("#dob").val(), "EmailID": $("#email").val(), "Password": $("#password").val()};
+		// json = {"Name": $("#firstName").val(), "Dob": $("#dob").val(), "EmailID": $("#email").val(), "Password": $("#password").val()};
+	    var json = '{"updateUser":{"Name": "' + $("#firstName").val() + '", "Dob":  "' + $("#dob").val() + '", "EmailID":  "' + $("#email").val() + '", "Password":  "' + $("#password").val() + '"}}';
 		$.ajax({
-			url: "/" + strHostName + "/Home/ModifyRecord3",
+		    url: "/" + strHostName + "/Home/ModifyRecord3",
 			type: "POST",
 			contentType: "application/json; charset=utf-8",
 			data: json,
@@ -80,6 +72,7 @@ $(document).ready( function(){
 				alert(reply);
 			}
 		});
+
 	});
 
 });

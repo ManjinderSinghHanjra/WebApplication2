@@ -14,10 +14,31 @@
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right" style="display:inline">
 				<li><a href="#">Home</a></li>
-				<li><a href="#nav-collapse-OSSTools" class="dropdown-toggle" data-toggle="dropdown">OSS Tools</a></li>
-				<!--<li><a href="#nav-collapse-OSSTools" data-toggle="collapse" aria-expanded="false" aria-controls="nav-collapse-OSSTools">OSS Tools</a></li>-->
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        OSS Tools
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Protein Synthesis Analyzer</a></li>
+                        <li><a href="#">Quantum Entanglement Simulator</a></li>
+                        <li><a href="#">Quantum Gravity Simulator</a></li>
+                        <li><a href="#">Anti-particle Collision Simulator</a></li>
+                    </ul>
+                </li>
 				<li><a href="#">Community</a></li>
-				<li><a href="#nav-collapse-Research" class="dropdown-toggle" data-toggle="dropdown">Research Section</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Research Section
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Quantum Physics</a></li>
+                        <li><a href="#">Bio-Informatics</a></li>
+                        <li><a href="#">Nuclear Medicine</a></li>
+                    </ul>
+                </li>
 				<li><a href="#">News</a></li>
 				<li><a href="@Url.Action("About", "Home")">About</a></li>
 				<li>
@@ -28,17 +49,6 @@
 						</div>
 					</form>
 				</li>
-			</ul>
-			<ul class="collapse nav navbar-nav nav-collapse" id="nav-collapse-OSSTools">
-				<li><a href="#">Protein Synthesis Analyzer</a></li>
-				<li><a href="#">Quantum Entanglement Simulator</a></li>
-				<li><a href="#">Quantum Gravity Simulator</a></li>
-				<li><a href="#">Anti-particle Collision Simulator</a></li>
-			</ul>
-			<ul class="collapse nav navbar-nav nav-collapse" id="nav-collapse-Research">
-				<li><a href="#">Quantum Physics</a></li>
-				<li><a href="#">Bio-Informatics</a></li>
-				<li><a href="#">Nuclear Medicine</a></li>
 			</ul>
 		</div>
 

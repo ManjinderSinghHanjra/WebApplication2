@@ -96,6 +96,8 @@ namespace WebApplication2.Controllers
             TempData["updateUser"] = updateUser;
             return Json(new { result = "Redirect", url = "Home/ModifyRecord1" });
         }
+
+        // Todo: The UpdateRecord button is sending data to this Action, fix this issue and make the button post data on ModifyRecord3 Action
         public ActionResult ModifyRecord1()
         {
             UserModel dummy = new UserModel();

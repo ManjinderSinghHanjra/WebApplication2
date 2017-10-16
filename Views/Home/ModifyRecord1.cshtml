@@ -4,16 +4,9 @@
     ViewBag.Title = "Modify Record";
 }
 
-@Scripts.Render("~/Scripts/jquery.min.js")
-@Scripts.Render("~/Scripts/jquery.validate.min.js")
-@Scripts.Render("~/Scripts/jquery-ui.js")
-@Scripts.Render("~/Scripts/bootstrap.min.js")
-@Scripts.Render("~/Scripts/UserDefined/modifyRecords.js")
-
-@Styles.Render("~/Content/jquery-ui.css")
-@Styles.Render("~/Content/bootstrap.min.css")
+@section styles{
 @Styles.Render("~/Content/UserDefined/signup.css")
-
+}
 <body>
     <div class="outer_div">
         <div class="middle_div" style="background:#abb">
@@ -47,4 +40,8 @@
             </div>
         </div>
     </div>
+    @section scripts{
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/UserDefined/modifyRecords.js")
+    }
 </body>

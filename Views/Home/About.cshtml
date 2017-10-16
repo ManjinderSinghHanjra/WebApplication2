@@ -15,10 +15,10 @@
 <br />
 <div>
     <div class="container-fluid">
-        <table id="contactCenters" class="table .table-striped .table-hover" style="background-color: #c58836;">
+        <table id="contactCenters" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th><input type="checkbox" id="parentCheckbox"/></th>
+                    <th><input type="checkbox" id="parentCheckbox" /></th>
                     <th>Name</th>
                     <th>Date of Birth</th>
                     <th>EmailID</th>
@@ -31,8 +31,8 @@
 </div>
 
 @section scripts{
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script>
     <script src="~/Scripts/UserDefined/about.js"></script>
 }

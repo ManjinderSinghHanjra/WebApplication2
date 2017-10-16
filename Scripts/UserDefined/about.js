@@ -1,11 +1,12 @@
 ﻿var strHostName = "DemoProject";
 
 $(document).ready(function () {
-   
+
     var table = $("#contactCenters").DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
+        deferRender: true,
+        processing: true,
+        serverSide: true,
+        ajax: {
             url: "/" + strHostName + "/Home/Details",
             type: 'POST',
             error: function (e, ts, et) {
@@ -13,34 +14,47 @@ $(document).ready(function () {
             }
         },
         columns: [
-                    { 'data': '' },
                     {
-                        'data': "Name",
+                        targets: [0],
+                        data: null,
+                        'orederable': false,
+                    },
+                    {
+                        targets: [1],
+                        data: "Name",
                         'searchable': true
                     },
-                    { 'data': "Dob" },
-                    { 'data': "EmailID" },
                     {
-                        'data': "Password",
+                        targets: [2],
+                        data: "Dob"
+                    },
+                    {
+                        targets: [3],
+                        data: "EmailID"
+                    },
+                    {
+                        targets: [4],
+                        data: "Password",
                         'searchable': false,
                         'orderable': false
                     },
-                    { 'data': "Auth" }
+                    {
+                        targets: [5],
+                        data: "Auth"
+                    }
         ],
-        'columnDefs': [{
-            'targets': 0,
-            'searchable': false,
-            'orderable': false,
-            'className': 'dt-body-center select-checkbox',
-            'render': function (data, type, full, meta) {
+        columnDefs: [{
+            targets: [0],
+            searchable: false,
+            orderable: false,
+            className: 'dt-body-center select-checkbox',
+            render: function (data, type, full, meta) {
                 return '<input type="checkbox" />';
-            },
-            select: {
-                style: 'os',
-                selector: 'td:first-child'
             }
         }],
-        "scrollY": "400px"
+        style: 'single',
+        selector: 'td:not(:first-child)',
+        scrollY: "400px"
 
     });
     /* PARENT_CHECKBOX */
@@ -71,12 +85,13 @@ $(document).ready(function () {
                     async: true,
                     cache: false,
                     success: function (reply) {
-                        table.ajax.reload().draw();
                     },
                     failure: function () { console.log("error"); }
                 });
             }
         }
+        allCheckBoxes[0].checked = false;
+        table.ajax.reload().draw();
     });
 
 
@@ -85,14 +100,14 @@ $(document).ready(function () {
      *            on the server, and server saves the data in TempData[] variable and redirects
      *            user to the ModifyRecord Page.
      */
-    $("#contactCenters").on('click', 'tr', function () {
+    $("#contactCenters tbody").on('click', 'td:not(:first-child)', function () {
         // Todo: Make row selection from multiple to single.
         $(this).addClass('selected');
-        var checkbox = table.row(this).data();    
+        var checkbox = table.row(this).data();
         if (checkbox.checked == true) {
         }
         else {
-            
+
             var rowdata = JSON.stringify(table.row(this).data());
             $.ajax({
                 url: "/" + strHostName + "/home/ModifyRecord0",

@@ -6,12 +6,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title -Intellect Corporations LLC</title>
-        @Styles.Render("~/Content/bootstrap.min.css")
-        @Scripts.Render("~/Scripts/jquery.min.js")
-        @Scripts.Render("~/Scripts/bootstrap.min.js")
-        @Scripts.Render("~/Scripts/UserDefined/home.js")
-        @Styles.Render("~/Content/UserDefined/home.css")
-       <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+        @Styles.Render("~/Content/UserDefined/home.css")    
         @RenderSection("styles", required: false)
     </head>
     <body>
@@ -28,6 +26,11 @@
         </div>
 
    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        @Scripts.Render("~/Scripts/UserDefined/home.js")
         @RenderSection("scripts", required: false)
     </body>
     </html>
