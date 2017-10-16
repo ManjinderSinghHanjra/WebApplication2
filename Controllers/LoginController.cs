@@ -74,8 +74,8 @@ namespace WebApplication2.Controllers
                     return Json("Username and/or password mismatch!");
                     break; // For safety
                 case USER_PASS_MATCHED:
-                    System.Console.Write("Entered CODE_2. Redirecting...\n");
-                    return Json("Sign In Successful! Redirecting You to the website...");
+                    ((UserModel)Session["user"]).Type = UserModel.USER;
+                    return Json("OK!");
                     break;
                 default: return Json("Error Unknown/ Operation Not Supported");
             }

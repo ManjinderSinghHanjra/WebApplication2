@@ -58,6 +58,10 @@ $(document).ready(function () {
         remodal.open();
     });
 
+    $("#alert-target").click(function () {
+        toastr["info"]("I was launched via jQuery!")
+    });
+
 
     $("#signIn").on('click', function (e) {
         e.preventDefault();
@@ -73,8 +77,11 @@ $(document).ready(function () {
                 cache: false,
                 async: true,
                 success: function (reply) {
-                    alert(JSON.stringify(reply));
-                    window.location.href = "/" + strHostName + "/home";
+                    if (reply == 'OK!')
+                        window.location.href = "/" + strHostName + "/home";
+                    else
+                        alert(reply);
+                    //toastr["error"]("Sign In failed!");
                 },
                 error: function (jsonReply) {
                     alert(JSON.stringify(jsonReply));

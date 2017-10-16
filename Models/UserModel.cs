@@ -8,15 +8,22 @@ namespace WebApplication2.Models
 {
     public class UserModel 
     {
-        private string name = "";
-        private string dob = "";
-        private string emailID = "";
-        private string password = "";
-        private bool auth = false;
 
-        const int NOTHING_MATCHED = 0;
-        const int USER_MATCHED = 1;
-        const int USER_PASS_MATCHED = 2; 
+        /* Todo: Try separating stuff into interfaces & classes to get a heirarchy. */
+        public const int NOTHING_MATCHED   = 0;
+        public const int USER_MATCHED      = 1;
+        public const int USER_PASS_MATCHED = 2;
+        public const int GUEST = 100;
+        public const int USER  = 101;
+
+
+        private string name         = "";
+        private string dob          = "";
+        private string emailID      = "";
+        private string password     = "";
+        private int    type         = GUEST;
+        private bool   auth         = false;
+        
         public int Inside(List<UserModel> users)
         {
             foreach(UserModel user in users)
@@ -64,12 +71,10 @@ namespace WebApplication2.Models
             set { auth = value; }
         }
 
-        //public bool Equals(UserModel user)
-        //{
-        //    if (this.EmailID.Equals(user.EmailID))
-        //        return true;
-        //    return false;
-        //}
-
+        public int Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
     }
 }
