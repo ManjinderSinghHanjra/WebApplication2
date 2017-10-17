@@ -32,6 +32,32 @@ namespace WebApplication2.Models.Utilities
             return templistUsers;
         }
 
+        public static UserModel search(int userId)
+        {
+            List<UserModel> templistUsers = new List<UserModel>();
+            List<UserModel> listUsers = (List<UserModel>)HttpContext.Current.Application["users"];
+            foreach (UserModel user in listUsers)
+            {
+                if (user.Id == userId)
+                    return user;
+            }
+            return null;
+        }
+
+        public static UserModel search(string email)
+        {
+            List<UserModel> templistUsers = new List<UserModel>();
+            List<UserModel> listUsers = (List<UserModel>)HttpContext.Current.Application["users"];
+            foreach (UserModel user in listUsers)
+            {
+                if (user.EmailID.Equals(email))
+                    return user;
+            }
+            return null;
+        }
+
+
+
 
         private void populateDataTable()
         {

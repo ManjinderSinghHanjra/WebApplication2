@@ -217,6 +217,7 @@
     <Content Include="Scripts\UserDefined\remodal.js" />
     <Content Include="Scripts\UserDefined\signup.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Todo.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

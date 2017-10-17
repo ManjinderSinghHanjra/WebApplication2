@@ -1,6 +1,21 @@
-﻿// Todo: Naming convention : Done
-// Todo: Make the Table data manipulated based on UserID
+﻿// Todo: Fix the RouteConfig
+
+// Todo: Naming convention : Done
+// Todo: Reflect Name changes in js files as well. : Done
+// Todo: Make the Table data manipulated based on UserID : 
+		Done -- generateDummyUsers()
+		Done -- Rewrite about.js and DataTable
+		Done -- Rewrite all those Actions that deal with DataTable
+
+
 // Todo: Rename ModifyRecord & its companions
 // Todo: Make logic more apparent and readable
 // Todo: Do the documentation of all those methods that introduce some level of complexity.
-// Todo: Fix the RouteConfig
+
+// Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
+// Todo: Fix missing tether.io file error in js
+// Todo: Improve DataTable delete in js
+
+/* Todo: Try separating stuff into interfaces & classes to get a heirarchy. */
+
+/* Todo: Better alernative to List approach as the Time Complexity is constant in dictionary lookup */

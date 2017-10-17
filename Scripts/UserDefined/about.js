@@ -7,7 +7,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "/" + strHostName + "/Home/Details",
+            url: "/" + strHostName + "/Home/PopulateDataTable",
             type: 'POST',
             error: function (e, ts, et) {
                 alert(ts);
@@ -16,13 +16,14 @@ $(document).ready(function () {
         columns: [
                     {
                         targets: [0],
-                        data: null,
-                        'orederable': false,
+                        data: "Id",
+                        orderable: false,
+                        searchable: false
                     },
                     {
                         targets: [1],
                         data: "Name",
-                        'searchable': true
+                        searchable: true
                     },
                     {
                         targets: [2],
@@ -35,8 +36,8 @@ $(document).ready(function () {
                     {
                         targets: [4],
                         data: "Password",
-                        'searchable': false,
-                        'orderable': false
+                        searchable: false,
+                        orderable: false
                     },
                     {
                         targets: [5],
@@ -70,16 +71,15 @@ $(document).ready(function () {
 
     /* DELETE_BUTTON: Delete the records that are selected while syncing with the server. */
     $("#contactCenters_length").on('click', '#deleteSelected', function (e) {
-        var data;
         var allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
         console.log(allCheckBoxes);
         for (var i = 2; i < allCheckBoxes.length; i++) {
             if (allCheckBoxes[i].checked == true) {
-                data = JSON.stringify(table.row(allCheckBoxes[i].parentNode).data());
+                userId = table.row(allCheckBoxes[i].parentNode).data().Id;
                 $.ajax({
                     url: "/" + strHostName + "/Home/Delete",
                     type: "POST",
-                    data: data,
+                    data: '{ userId : ' + userId + '}',
                     contentType: "application/json; charset=utf-8",
                     async: true,
                     cache: false,
@@ -89,10 +89,10 @@ $(document).ready(function () {
                 });
                 table.ajax.reload().draw();
             }
-            
+
         }
         allCheckBoxes[0].checked = false;
-        
+
     });
 
 
@@ -101,20 +101,17 @@ $(document).ready(function () {
      *            on the server, and server saves the data in TempData[] variable and redirects
      *            user to the ModifyRecord Page.
      */
-    $("#contactCenters tbody").on('click', 'td:not(:first-child)', function () {
-        // Todo: Make row selection from multiple to single.
+    $("#contactCenters tbody").on('click', "td:not(:first-child)", function () {
+        var userId = (table.row(this.parentNode).data().Id);
         $(this).addClass('selected');
-        var checkbox = table.row(this).data();
-        if (checkbox.checked == true) {
+        if (table.row(this).data().checked == true) {
         }
         else {
-
-            var rowdata = JSON.stringify(table.row(this).data());
             $.ajax({
                 url: "/" + strHostName + "/home/ModifyRecord0",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
-                data: rowdata,
+                data: '{ userId : ' + userId + '}',
                 cache: false,
                 async: true,
                 success: function (reply) {

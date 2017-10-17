@@ -29,9 +29,7 @@ namespace WebApplication2.Controllers
 
         [HttpPost]
         public ActionResult SignUpSubmitDetails(UserModel oUserModel)
-        {
-            // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
-            
+        {   
             /* Note:
              *      Don't change the order of the conditions put inside if() clause, we first need to check if elements are null or not null, 
              *      only then we can proceed with the other conditions.
@@ -52,6 +50,7 @@ namespace WebApplication2.Controllers
                         return Json("Sorry, user already exists. If you are an existing user try logging in.");
                         break; // For safety
                     default:
+                        oUserModel.Id = users.Last().Id + 1;
                         users.Add(oUserModel);
                         HttpContext.Application["users"] = users;
                         return Json("Sign Up Successful!");

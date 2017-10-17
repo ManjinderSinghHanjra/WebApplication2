@@ -5,13 +5,13 @@ using System.Web;
 
 namespace WebApplication2.Models.Utilities
 {
-    // Todo: Should this be a class? :?
     public class GeneralUtilities
     {
         /* Operation Status Constants */
         public const int SUCCESS = 1;
         public const int FAILURE = 0;
         public const int UNKNOWN = -1;
+
         /// <summary>
         /// Tells if the current session user is a GUEST or a LoggedIn USER
         /// </summary>
@@ -40,6 +40,18 @@ namespace WebApplication2.Models.Utilities
                 case SUCCESS: return "SUCCESS";
             }
             return "UNKNWON";
+        }
+
+        public static List<UserModel> generateDummyUsers()
+        {
+            int year = 1000, month = 1, date = 1;
+            List<UserModel> users = new List<UserModel>();
+            users.Add(new UserModel() { Id = 0, Name = "Admin", Dob = DateTime.Now, EmailID = "admin", Password = "admin" });
+            for (int i = 0; i < 50; i++)
+            {
+                users.Add(new UserModel() { Id = i+1, Name = (char)(i + 'a') + "Name", Dob = new DateTime(year, month, date), EmailID = (char)(i + (int)'a') + "@gmail.com", Password = i + "Password" });
+            }
+            return users;
         }
     }
 }
