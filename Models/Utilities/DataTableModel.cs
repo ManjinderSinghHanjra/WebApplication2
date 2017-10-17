@@ -5,6 +5,9 @@ using System.Web;
 
 namespace WebApplication2.Models.Utilities
 {
+    /// <summary>
+    /// This class represents the data inside a DataTable
+    /// </summary>
     public class DataTableModel
     {
         public int draw { get; set; }

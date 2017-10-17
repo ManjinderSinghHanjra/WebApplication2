@@ -32,6 +32,12 @@ namespace WebApplication2.Models.Utilities
             return templistUsers;
         }
 
+
+        /// <summary>
+        /// Performs search based on userId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>A user(UserModel) that matches based on the userId || null</returns>
         public static UserModel search(int userId)
         {
             List<UserModel> templistUsers = new List<UserModel>();
@@ -44,6 +50,11 @@ namespace WebApplication2.Models.Utilities
             return null;
         }
 
+        /// <summary>
+        /// Performs search based on email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>A user(UserModel) that matches based on the email || null</returns>
         public static UserModel search(string email)
         {
             List<UserModel> templistUsers = new List<UserModel>();
@@ -54,14 +65,6 @@ namespace WebApplication2.Models.Utilities
                     return user;
             }
             return null;
-        }
-
-
-
-
-        private void populateDataTable()
-        {
-
         }
 
 
@@ -90,6 +93,11 @@ namespace WebApplication2.Models.Utilities
                 Console.Write(e);
                 return GeneralUtilities.FAILURE;
             }
+        }
+
+        private void populateDataTable()
+        {
+
         }
     }
 }

@@ -19,38 +19,34 @@ namespace WebApplication2.Controllers
         static int RECORD_SIZE = 50;
 
 
-        /*-----------------------------------------------------------------------------------------------------------*/
-        /// <summary>
-        /// Tells if the Session User is a GUEST or a LoggedIn USER
-        /// </summary>
-        /// <returns>UserModel.GUEST or UserModel.USER</returns>
+        /*------------------------------------------Index----------------------------------------------------------------*/
         public ActionResult Index()
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             return View();
         }
 
-        /*-----------------------------------------------------------------------------------------------------------*/
+        /*-----------------------------------------Contact-----------------------------------------------------------*/
         public ActionResult Contact()
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             ViewBag.Message = "Your contact page.";
             return View();
         }
 
 
-        /* ------------------------------------------------------------------------------------------------------------ */
+        /* ----------------------------------------About--------------------------------------------------------------- */
         public ActionResult About()
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             return View();
         }
 
-        
-        /*-----------------------------------------------------------------------------------------------------------*/
+
+        /*------------------------------------PopulateDataTable--------------------------------------------*/
         public ActionResult PopulateDataTable(int draw, int start, int length)
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
 
             string strSearchParam = Request.Params["search[value]"];
             if (start == 0 || !strSearchParam.Equals(_previousSearchString))
@@ -69,15 +65,18 @@ namespace WebApplication2.Controllers
 
         /*-----------------------------------------------------------------------------------------------------------*/
         [HttpPost]
-        public void Delete(int userId)
+        public void Delete(List<int> listUserIds)
         {
             List<UserModel> listUsers = (List<UserModel>) HttpContext.Application["users"];
-            foreach(UserModel user in listUsers)
+            foreach (int Id in listUserIds)
             {
-                if(user.Id == userId)
+                foreach (UserModel user in listUsers)
                 {
-                    listUsers.Remove(user);
-                    break;
+                    if (user.Id == Id)
+                    {
+                        listUsers.Remove(user);
+                        break;
+                    }
                 }
             }
             RECORD_SIZE = listUsers.Count;
@@ -94,17 +93,16 @@ namespace WebApplication2.Controllers
         /// </summary>
         /// <param name="updateUser"></param>
         /// <returns></returns>
-        public ActionResult ModifyRecord0(int userId)
+        public ActionResult RequestToUpdateUser(int userId)
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
-
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             TempData["userId"] = userId;
-            return Json(new { result = "Redirect", url = "Home/ModifyRecord1" });
+            return Json(new { result = "Redirect", url = "Home/UpdateUserForm" });
         }
 
-        public ActionResult ModifyRecord1()
+        public ActionResult UpdateUserForm()
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
 
             UserModel oDummy = new UserModel();
             oDummy.EmailID = "dummy";
@@ -117,9 +115,9 @@ namespace WebApplication2.Controllers
         }
         
         [HttpPost]
-        public ActionResult ModifyRecord3(UserModel oUpdateUserModel)
+        public ActionResult UpdateUserCommit(UserModel oUpdateUserModel)
         {
-            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("/");
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
 
             return Json("Record Update- Status: " + GeneralUtilities.stringifyStatus(static_oDataTableUtilites.updateUser(oUpdateUserModel)) + "!");
         }

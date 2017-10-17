@@ -71,26 +71,26 @@ $(document).ready(function () {
 
     /* DELETE_BUTTON: Delete the records that are selected while syncing with the server. */
     $("#contactCenters_length").on('click', '#deleteSelected', function (e) {
+        var listUserIds = [];
         var allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
-        console.log(allCheckBoxes);
-        for (var i = 2; i < allCheckBoxes.length; i++) {
+        for (var i = 1; i < allCheckBoxes.length; i++) {
             if (allCheckBoxes[i].checked == true) {
                 userId = table.row(allCheckBoxes[i].parentNode).data().Id;
-                $.ajax({
-                    url: "/" + strHostName + "/Home/Delete",
-                    type: "POST",
-                    data: '{ userId : ' + userId + '}',
-                    contentType: "application/json; charset=utf-8",
-                    async: true,
-                    cache: false,
-                    success: function (reply) {
-                    },
-                    failure: function () { console.log("error"); }
-                });
-                table.ajax.reload().draw();
+                JSON.stringify(listUserIds.push(userId));
             }
-
         }
+        $.ajax({
+            url: "/" + strHostName + "/Home/Delete",
+            type: "POST",
+            data: JSON.stringify({ "listUserIds": listUserIds }),
+            contentType: "application/json; charset=utf-8",
+            async: true,
+            cache: false,
+            success: function (reply) {
+            },
+            failure: function () { console.log("error"); }
+        });
+        table.ajax.reload().draw();
         allCheckBoxes[0].checked = false;
 
     });
@@ -108,7 +108,7 @@ $(document).ready(function () {
         }
         else {
             $.ajax({
-                url: "/" + strHostName + "/home/ModifyRecord0",
+                url: "/" + strHostName + "/home/RequestToUpdateUser",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 data: '{ userId : ' + userId + '}',

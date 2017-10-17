@@ -56,9 +56,9 @@ $(document).ready( function(){
 
 	$("#buttonUpdateRecords").on('click', function (e) {
 	    e.preventDefault();
-	    var json = '{"updateUser":{"Name": "' + $("#firstName").val() + '", "Dob":  "' + $("#dob").val() + '", "EmailID":  "' + $("#email").val() + '", "Password":  "' + $("#password").val() + '"}}';
+	    var json = '{"oUpdateUserModel":{"Name": "' + $("#firstName").val() + '", "Dob":  "' + $("#dob").val() + '", "EmailID":  "' + $("#email").val() + '", "Password":  "' + $("#password").val() + '"}}';
 		$.ajax({
-		    url: "/" + strHostName + "/Home/ModifyRecord3",
+		    url: "/" + strHostName + "/Home/UpdateUserCommit",
 			type: "POST",
 			contentType: "application/json; charset=utf-8",
 			data: json,

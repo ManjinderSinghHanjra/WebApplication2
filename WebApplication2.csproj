@@ -246,7 +246,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
-    <Content Include="Views\Home\ModifyRecord1.cshtml" />
+    <Content Include="Views\Home\UpdateUserForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

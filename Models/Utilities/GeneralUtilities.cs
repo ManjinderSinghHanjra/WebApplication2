@@ -42,6 +42,10 @@ namespace WebApplication2.Models.Utilities
             return "UNKNWON";
         }
 
+        /// <summary>
+        /// Generates dummy users for testing purposes.
+        /// </summary>
+        /// <returns>List of users(UserModel)</returns>
         public static List<UserModel> generateDummyUsers()
         {
             int year = 1000, month = 1, date = 1;

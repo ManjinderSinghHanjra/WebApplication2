@@ -6,16 +6,19 @@
 		Done -- generateDummyUsers()
 		Done -- Rewrite about.js and DataTable
 		Done -- Rewrite all those Actions that deal with DataTable
+// Todo: Improve DataTable delete in js		: Done
+// Todo: Rename ModifyRecord & its companions	: Done
+// Todo: Do the documentation of all those methods that introduce some level of complexity.   : Done
+		Done -- DataTable delete made fast
 
 
-// Todo: Rename ModifyRecord & its companions
 // Todo: Make logic more apparent and readable
-// Todo: Do the documentation of all those methods that introduce some level of complexity.
-
 // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
 // Todo: Fix missing tether.io file error in js
-// Todo: Improve DataTable delete in js
+
+
 
 /* Todo: Try separating stuff into interfaces & classes to get a heirarchy. */
-
 /* Todo: Better alernative to List approach as the Time Complexity is constant in dictionary lookup */
+
+// Todo: The parentCheckbox remains selected if user navigates to another DataTable page.
