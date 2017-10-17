@@ -54,7 +54,8 @@ $(document).ready( function(){
 
 
 
-	$("#buttonUpdateRecords").on('click', function (e) {
+    $("#buttonUpdateRecords").on('click', function (e) {
+        $("#modifyForm").valid();
 	    e.preventDefault();
 	    var json = '{"oUpdateUserModel":{"Name": "' + $("#firstName").val() + '", "Dob":  "' + $("#dob").val() + '", "EmailID":  "' + $("#email").val() + '", "Password":  "' + $("#password").val() + '"}}';
 		$.ajax({

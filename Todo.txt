@@ -16,6 +16,7 @@
 // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
 // Todo: Fix missing tether.io file error in js
 
+// Todo: Date in datepicker isn't formatted correctly as the result returned from C#
 
 
 /* Todo: Try separating stuff into interfaces & classes to get a heirarchy. */

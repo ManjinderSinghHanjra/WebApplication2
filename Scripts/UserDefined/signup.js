@@ -1,9 +1,9 @@
 var strHostName = "DemoProject";
 
 function Remodal(text) {
-    var remodal = $('[data-remodal-id=modal]').remodal();
-    $("#modalText").html(text);
-    remodal.open();
+	var remodal = $('[data-remodal-id=modal]').remodal();
+	$("#modalText").html(text);
+	remodal.open();
 };
 
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 		},
 		changeMonth: true,
 		changeYear: true,
-		dateFormat: 'dd MM yy',
+		dateFormat: 'dd-mm-yy',
 		yearRange: '1910:+nn',
 		minDate: '-107Y',
 		maxDate: '-9Y +93D',
@@ -37,6 +37,7 @@ $(document).ready(function () {
 
 	$("#signUpSubmit").on('click', function (e) {
 		e.preventDefault();
+		$("#signupForm").valid();
 		var json = JSON.stringify( { "Name": $("#firstName").val(), "Dob": $("#dob").val(), "EmailID": $("#email").val(), "Password": $("#password").val() } );
 		$.ajax({
 			url: "/" + strHostName + "/Login/SignUpSubmitDetails",
