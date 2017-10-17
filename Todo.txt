@@ -1,0 +1,6 @@
+﻿// Todo: Naming convention : Done
+// Todo: Make the Table data manipulated based on UserID
+// Todo: Rename ModifyRecord & its companions
+// Todo: Make logic more apparent and readable
+// Todo: Do the documentation of all those methods that introduce some level of complexity.
+// Todo: Fix the RouteConfig

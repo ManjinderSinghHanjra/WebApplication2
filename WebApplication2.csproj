@@ -168,6 +168,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Utilities\DataTableModel.cs" />
+    <Compile Include="Models\Utilities\DataTableUtilities.cs" />
+    <Compile Include="Models\Utilities\GeneralUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

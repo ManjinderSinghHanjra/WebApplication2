@@ -1,14 +1,14 @@
 ﻿
-@{
+@*@{
     var user = (WebApplication2.Models.UserModel)HttpContext.Current.Session["user"];
 
-    if (user.Type == 100)
+    if (oUserModel.Type == 100)
     {
 
         Url.Action("Login", "Login");
     }
     else
-    {
+    {*@
         <!DOCTYPE html>
         <html>
         <head>
@@ -19,8 +19,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
             @Styles.Render("~/Content/UserDefined/home.css")
-            HelperResult renderSection = RenderSection("styles", required: false);
-            renderSection.WriteTo(Output);
+            @RenderSection("styles", required: false);
         </head>
         <body>
             <header>
@@ -40,9 +39,8 @@
             <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
             @Scripts.Render("~/Scripts/UserDefined/home.js")
-            renderSection = RenderSection("scripts", required:false);
-            renderSection.WriteTo(Output);
+            @RenderSection("scripts", required:false);
         </body>
     </html>
-    }
-}
+    @*}
+}*@

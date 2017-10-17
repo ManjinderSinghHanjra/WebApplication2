@@ -8,26 +8,34 @@ using System.Web.Mvc;
 using WebApplication2.Models;
 using WebApplication2.Models.Utilities;
 
-
 namespace WebApplication2.Controllers
 {
     public class HomeController : Controller
     {
 
-        static string previousSearchString = "drupakas";
-        static List<UserModel> filteredResult = null;
+        static DataTableUtilities static_oDataTableUtilites = new DataTableUtilities();
+        static string _previousSearchString = "drupakas";
+        static List<UserModel> _filteredResults = null;
         static int RECORD_SIZE = 50;
-        const int SUCCESS     = 1;
-        const int FAILURE     = 0;
-        const int UNKNOWN     = -1;
+        
+
+        /// <summary>
+        /// Tells if the Session User is a GUEST or a LoggedIn USER
+        /// </summary>
+        /// <returns>UserModel.GUEST or UserModel.USER</returns>
+
+        /*-----------------------------------------------------------------------------------------------------------*/
         public ActionResult Index()
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
             return View();
         }
+
+        /*-----------------------------------------------------------------------------------------------------------*/
         public ActionResult Contact()
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -35,117 +43,85 @@ namespace WebApplication2.Controllers
         /* ------------------------------------------------------------------------------------------------------------ */
         public ActionResult About()
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
             return View();
         }
 
-
-        public ActionResult Details(int draw, int start, int length)  // Todo:
+        /*-----------------------------------------------------------------------------------------------------------*/
+        public ActionResult PopulateDataTable(int nDraw, int nStart, int nLength)
         {
-            string searchParam = Request.Params["search[value]"];
-            if (start == 0 || !searchParam.Equals(previousSearchString))
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
+
+            string strSearchParam = Request.Params["search[value]"];
+            if (nStart == 0 || !strSearchParam.Equals(_previousSearchString))
             {
-                filteredResult = search(searchParam, start, length);
+                _filteredResults = DataTableUtilities.search(strSearchParam, nStart, nLength);
             }
 
-            start = start >= filteredResult.Count ? filteredResult.Count : start;
-            int range = (start + length) >= filteredResult.Count ? (filteredResult.Count - start) : length;
-            var result = new { recordsTotal = RECORD_SIZE, recordsFiltered = filteredResult.Count, data = filteredResult.GetRange(start, range) };
-            previousSearchString = searchParam;
-            return Json(result);
+            nStart = nStart >= _filteredResults.Count ? _filteredResults.Count : nStart;
+            int nRange = (nStart + nLength) >= _filteredResults.Count ? (_filteredResults.Count - nStart) : nLength;
+            var jsonResult = new { recordsTotal = RECORD_SIZE, recordsFiltered = _filteredResults.Count, data = _filteredResults.GetRange(nStart, nRange) };
+            _previousSearchString = strSearchParam;
+            return Json(jsonResult);
 
         }
 
+
+        /*-----------------------------------------------------------------------------------------------------------*/
         [HttpPost]
-        public void Delete(UserModel deleteUser)
+        public void Delete(UserModel oDeleteUserModel)
         {
-            List<UserModel> users = (List<UserModel>) HttpContext.Application["users"];
-            foreach(UserModel user in users)
+            List<UserModel> listUsers = (List<UserModel>) HttpContext.Application["users"];
+            foreach(UserModel user in listUsers)
             {
-                if(user.EmailID.Equals(deleteUser.EmailID))
+                if(user.EmailID.Equals(oDeleteUserModel.EmailID))
                 {
-                    users.Remove(user);
+                    listUsers.Remove(user);
                     break;
                 }
             }
-            RECORD_SIZE = users.Count;
-            HttpContext.Application["users"] = users;
-            filteredResult = (List<UserModel>)HttpContext.Application["users"];
-        }
-
-        private List<UserModel> search(string searchParams, int start, int length)
-        {
-            List<UserModel> tempList = new List<UserModel>();
-            List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
-            foreach (UserModel user in users)
-            {
-                Regex regex = new Regex(searchParams);
-                if (regex.IsMatch(user.EmailID))
-                {
-                    tempList.Add(user);
-                }
-            }
-            return tempList;
+            RECORD_SIZE = listUsers.Count;
+            HttpContext.Application["users"] = listUsers;
+            _filteredResults = (List<UserModel>)HttpContext.Application["users"];
         }
 
 
 
 
         /* ------------------------------------------------------------------------------------------------------------ */
-        public ActionResult ModifyRecord0(UserModel updateUser)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="updateUser"></param>
+        /// <returns></returns>
+        public ActionResult ModifyRecord0(UserModel oUserModel)
         {
-            TempData["updateUser"] = updateUser;
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
+
+            TempData["updateUser"] = oUserModel;
             return Json(new { result = "Redirect", url = "Home/ModifyRecord1" });
         }
 
-        // Todo: The UpdateRecord button is sending data to this Action, fix this issue and make the button post data on ModifyRecord3 Action
         public ActionResult ModifyRecord1()
         {
-            UserModel dummy = new UserModel();
-            dummy.EmailID = "dummy";
-            dummy.Name = "dummy";
-            dummy.Password = "dummyPassword";
-            dummy.Dob = "1 Jan 1995";
-            dummy.Auth = false;
-            TempData["updateUser"] = TempData["updateUser"] == null ? dummy : (UserModel)TempData["updateUser"];
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
+
+            UserModel oDummy = new UserModel();
+            oDummy.EmailID = "dummy";
+            oDummy.Name = "dummy";
+            oDummy.Password = "dummyPassword";
+            oDummy.Dob = "1 Jan 1995";
+            oDummy.Auth = false;
+            TempData["updateUser"] = TempData["updateUser"] == null ? oDummy : (UserModel)TempData["updateUser"];
             return View(TempData["updateuser"]);
         }
         
         [HttpPost]
-        public ActionResult ModifyRecord3(UserModel updateUser)
+        public ActionResult ModifyRecord3(UserModel oUpdateUserModel)
         {
-            return Json("Record Update- Status: " + Status(modify(updateUser)) + "!");
-        }
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToRoute("default");
 
-        private int modify(UserModel updateUser)
-        {
-            try
-            {
-                List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
-                for (int i = 0; i < users.Count; i++ )
-                {
-                    if (users[i].EmailID.Equals(updateUser.EmailID))
-                    {
-                        users[i] = updateUser;
-                    }
-                }
-                return SUCCESS;
-            } catch(Exception e)
-            {
-                Console.Write(e);
-                return FAILURE;
-            }
-                //return UNKNOWN;
-        }
-
-        private string Status(int status)
-        {
-            switch(status)
-            {
-                case UNKNOWN: return "UNKNWON";
-                case FAILURE: return "FAILURE";
-                case SUCCESS: return "SUCCESS";
-            }
-            return "UNKNWON";
+            return Json("Record Update- Status: " + GeneralUtilities.stringifyStatus(static_oDataTableUtilites.updateUser(oUpdateUserModel)) + "!");
         }
 
     }

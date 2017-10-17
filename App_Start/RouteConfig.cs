@@ -20,7 +20,7 @@ namespace WebApplication2
                 );
 
             routes.MapRoute(
-                name: "Default",
+                name: "default",
                 url: "Login/{action}/{id}",
                 defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             );

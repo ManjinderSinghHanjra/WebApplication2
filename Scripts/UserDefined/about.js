@@ -52,7 +52,7 @@ $(document).ready(function () {
                 return '<input type="checkbox" />';
             }
         }],
-        style: 'single',
+        style: 'os',
         selector: 'td:not(:first-child)',
         scrollY: "400px"
 
@@ -74,9 +74,8 @@ $(document).ready(function () {
         var allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
         console.log(allCheckBoxes);
         for (var i = 2; i < allCheckBoxes.length; i++) {
-            var checkBox = allCheckBoxes[i];
-            if (checkBox.checked == true) {
-                data = JSON.stringify(table.row(checkBox.parentNode).data());
+            if (allCheckBoxes[i].checked == true) {
+                data = JSON.stringify(table.row(allCheckBoxes[i].parentNode).data());
                 $.ajax({
                     url: "/" + strHostName + "/Home/Delete",
                     type: "POST",
@@ -88,10 +87,12 @@ $(document).ready(function () {
                     },
                     failure: function () { console.log("error"); }
                 });
+                table.ajax.reload().draw();
             }
+            
         }
         allCheckBoxes[0].checked = false;
-        table.ajax.reload().draw();
+        
     });
 
 

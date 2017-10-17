@@ -28,7 +28,7 @@ namespace WebApplication2.Controllers
 
 
         [HttpPost]
-        public ActionResult SignUpSubmitDetails(UserModel user)
+        public ActionResult SignUpSubmitDetails(UserModel oUserModel)
         {
             // Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
             
@@ -36,8 +36,8 @@ namespace WebApplication2.Controllers
              *      Don't change the order of the conditions put inside if() clause, we first need to check if elements are null or not null, 
              *      only then we can proceed with the other conditions.
              */
-            if (user == null || user.EmailID == null || user.Dob == null || user.Name == null || user.Password == null ||
-                user.EmailID.Equals("") || user.Dob.Equals("") || user.Name.Equals("") || user.Password.Equals("")
+            if (oUserModel == null || oUserModel.EmailID == null || oUserModel.Dob == null || oUserModel.Name == null || oUserModel.Password == null ||
+                oUserModel.EmailID.Equals("") || oUserModel.Dob.Equals("") || oUserModel.Name.Equals("") || oUserModel.Password.Equals("")
                 )
             {
                 return Json("We don't accept forms that are empty or with any of the missing fields except LastName.");
@@ -45,14 +45,14 @@ namespace WebApplication2.Controllers
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
             try
             {
-                switch (user.Inside(users))
+                switch (oUserModel.Inside(users))
                 {
                     case USER_MATCHED:
                     case USER_PASS_MATCHED:
                         return Json("Sorry, user already exists. If you are an existing user try logging in.");
                         break; // For safety
                     default:
-                        users.Add(user);
+                        users.Add(oUserModel);
                         HttpContext.Application["users"] = users;
                         return Json("Sign Up Successful!");
                 }
@@ -83,15 +83,15 @@ namespace WebApplication2.Controllers
 
         private int checkCredentials(string emailID, string password)
         {
-            UserModel user = new UserModel();
-            user.EmailID = emailID;
-            user.Password = password;
+            UserModel oUserModel = new UserModel();
+            oUserModel.EmailID = emailID;
+            oUserModel.Password = password;
             List<UserModel> users = (List<UserModel>)HttpContext.Application["users"];
             if (emailID == null || password == null)
             {
                 return INITIAL_REQ;
             }
-            return user.Inside(users);
+            return oUserModel.Inside(users);
         }
     }
 }
