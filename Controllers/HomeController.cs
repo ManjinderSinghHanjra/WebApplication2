@@ -42,6 +42,12 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        /*----------------------------------------FormFill--------------------------------------------*/
+        public ActionResult UpdateAccount()
+        {
+            return View();
+        }
+
 
         /*------------------------------------PopulateDataTable--------------------------------------------*/
         public ActionResult PopulateDataTable(int draw, int start, int length)

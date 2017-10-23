@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Fill the form";
+}
+
+<div class="container-fluid" id="formDiv" style="padding: 50px; width:800px">
+    <form style="padding:10px; margin:10px">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="inputName">First Name</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputName">Last Name</label>
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="emailID">EmailID</label>
+            <input class="col-md-8 form-control" type="email" placeholder="abc@example.com" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" placeholder="abc@example.com" />
+        </div>
+        <div class="row undeleteable">
+            <div class="form-group col-md-4">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="gender">gender</label>
+                <select class="custom-select form-control">
+                    <option selected>Male</option>
+                    <option>Female</option>
+                    <option>Trans</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="nationality">Nationality</label>
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="row" id="buttonGroup">
+            <div class="form-group dropdown col-md-4">
+                <button id="addNewSection" type="button" style="width:100%" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                <ul class="dropdown-menu text-center" style="width: 100%">
+                    <li><a id="educationSectionButton">Education</a></li>
+                    <li><a id="workSectionButton">Work Experience</a></li>
+                    <li><a id="researchSectionButton">Research Papers</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <button class="form-group btn btn-primary" style="width:100%" id="deleteSection" type="button"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+            </div>
+        </div>
+            <button id="updateAccountButton" type="button" class="btn btn-info">Update Your Account</button>
+    </form>
+
+    
+
+    <!---------------------------------- Hidden Sections, here onwards---------------------------------->
+    <div id="educationSection" style="display:none">
+        <h3 style="color:white">Education</h3><div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Board/University Name" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Minors/Majors" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Marks %" />
+            </div>
+        </div>
+    </div>
+    <div id="workSection" style="display:none">
+        <h3 style="color:white">Work Experience</h3>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Organisation Name" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Overall Experience" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Acheivements" />
+            </div>
+        </div>
+        <div class="row" id="skillAndMoreRow">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Skill" />
+            </div>
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Experience" />
+            </div>
+            <div class="form-group col-md-2">
+                <button class="form-control btn btn-primary" id="addExtraSkills" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button class="form-control btn btn-danger" id="deleteExtraSkills" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+            </div>
+        </div>
+    </div>
+    <div id="researchSection" style="display:none">
+        <h3 style="color:white">Research Contribution</h3><div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Topic/Article" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Mentions" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Link to research" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/Scripts/UserDefined/updateAccount.js");
+}
