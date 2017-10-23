@@ -48,6 +48,12 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult FinalizeUpdateAccount(string user)
+        {
+            return Json("Account Successfully updated! \n" + user);
+        }
+
 
         /*------------------------------------PopulateDataTable--------------------------------------------*/
         public ActionResult PopulateDataTable(int draw, int start, int length)

@@ -1,10 +1,10 @@
-﻿var sections = {
-    educationSection: $("#educationSection"),
-    workSection: $("#workSection"),
-    researchSection: $("#researchSection")
-}
+﻿var strHostName = "DemoProject";
 $(document).ready(function () {
-    
+    var sections = {
+        educationSection: $("#educationSection").addClass('education'),
+        workSection: $("#workSection"),
+        researchSection: $("#researchSection")
+    }
     $('div > label').css({ 'color': "#fff", 'margin': 'auto' });
 
     $("#addNewSection+ul").on('click', 'li', function () {
@@ -38,4 +38,21 @@ $(document).ready(function () {
         $(this).parent().parent().remove();
     });
 
+    $("#updateAccountButton").on('click', function () {
+        var formData = JSON.stringify($("form").serialize());
+        $.ajax({
+            url: '/' + strHostName + '/Home/FinalizeUpdateAccount',
+            type: 'POST',
+            contentType: 'application/json; charset=utf8',
+            data: '{user: {formData}}',
+            async: true,
+            cache: false,
+            success: function (reply) {
+                alert("ajax successful.\nReply:" + reply);
+            },
+            error: function (reply) {
+                alert("ajax failed!\nReply:" + reply);
+            }
+        });
+    });
 });
