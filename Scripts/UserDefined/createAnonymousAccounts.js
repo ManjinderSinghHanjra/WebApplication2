@@ -43,29 +43,31 @@ $(document).ready(function () {
     });
 
     $("#submitButton").on('click', function () {
-        var json =[];
+        var json = [];
         $("#mainForm .formData").each(function (n) {
             var item = '{';
             $(this).find("input[type=text]").each(function (number) {
-                item += '"' + $(this).attr('name') + '"' + ':' + '"' + $(this).val() + '"';
+                item += "'" + $(this).attr('name') + "'" + ':' + "'" + $(this).val() + "'";
                 if(number<2)
                 {
                     item += ',';
                 }
             });
             item += '}';
-            json.push(item);
+            json.push(JSON.stringify(item));
+            //item += (item == "" ? "" : ("{" + item + "}"));
+            //json += item + (json == "" ? "" : ",");
         });
         $.ajax({
             url: "/" + strHostName + "/Home/FinalizeUpdateAccount",
-            data: json,
+            data: '{"user":'  + '["' + json  + '"]' +'}',
             async: true,
             contentType: 'application/json; charset=utf-8',
             type: 'POST',
             cache: false,
             success: function(reply)
             {
-               alert('ajax call successful\n' + 'Reply: ' + JSON.stringify(reply));
+                alert('ajax call successful\n' + 'Reply: ' + JSON.stringify(reply));
             },
             error: function (reply) {
                 alert('ajax call failed!\n' + 'Reply: ' + JSON.stringify(reply));
