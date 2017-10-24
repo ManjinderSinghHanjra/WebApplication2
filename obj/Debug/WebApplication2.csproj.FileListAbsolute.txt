@@ -52,4 +52,3 @@ C:\Users\dell\Documents\Visual Studio 2013\Projects\CSharp\WebApplication2\WebAp
 C:\Users\dell\Documents\Visual Studio 2013\Projects\CSharp\WebApplication2\WebApplication2\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\dell\Documents\Visual Studio 2013\Projects\CSharp\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\dell\Documents\Visual Studio 2013\Projects\CSharp\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
-C:\Users\dell\Documents\Visual Studio 2013\Projects\CSharp\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache

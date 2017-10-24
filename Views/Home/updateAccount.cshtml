@@ -1,13 +1,9 @@
-﻿@{
-    ViewBag.Title = "Fill the form";
-}
-
-<div class="container-fluid" id="formDiv" style="padding: 50px; width:800px">
+﻿<div class="container-fluid" id="formDiv" style="padding: 50px; width:800px">
     <form style="padding:10px; margin:10px">
         <div class="row">
-            <div class="form-group col-md-6">
-                <label for="inputName">First Name</label>
-                <input type="text" class="form-control" name="firstName" />
+            <div class="form-group col-md-12">
+                <label for="inputName">Full Name</label>
+                <input type="text" class="form-control" name="Name" />
             </div>
             <div class="form-group col-md-6">
                 <label for="inputName">Last Name</label>
@@ -16,20 +12,20 @@
         </div>
         <div class="form-group">
             <label for="emailID">EmailID</label>
-            <input class="col-md-8 form-control" type="email" placeholder="abc@example.com" name="emailID"/>
+            <input class="col-md-8 form-control" type="email" placeholder="abc@example.com" name="EmailID"/>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" placeholder="abc@example.com" name="password"/>
+            <input class="form-control" type="password" placeholder="abc@example.com" name="Password"/>
         </div>
         <div class="row undeleteable">
             <div class="form-group col-md-4">
                 <label for="age">Age</label>
-                <input type="number" class="form-control" name="age" />
+                <input type="number" class="form-control" name="Age" />
             </div>
             <div class="form-group col-md-4">
                 <label for="gender">Gender</label>
-                <select class="custom-select form-control" name="gender">
+                <select class="custom-select form-control" name="Gender">
                     <option selected>Male</option>
                     <option>Female</option>
                     <option>Trans</option>
@@ -37,7 +33,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="nationality">Nationality</label>
-                <input type="text" class="form-control" name="nationality"/>
+                <input type="text" class="form-control" name="Nationality"/>
             </div>
         </div>
         <div class="row" id="buttonGroup">
@@ -56,60 +52,114 @@
             <button id="updateAccountButton" type="button" class="btn btn-info">Update Your Account</button>
     </form>
 
-    
 
-    <!---------------------------------- Hidden Sections, here onwards---------------------------------->
-    <div id="educationSection" style="display:none">
-        <h3 style="color:white">Education</h3><div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Board/University Name" name="university"/>
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Minors/Majors" name="majors" />
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Marks %" name="marks" />
+
+<!-------------------------------- Hidden Sections, here onwards-------------------------------->
+<div id="educationSection" style="display:none">
+            <h3 style="color:white">Education</h3><div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Board/University Name" name="University"/>
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Minors/Majors" name="Majors" />
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Marks %" name="Marks" />
+                </div>
+            </div>
+        </div>
+        <div id="workSection" style="display:none">
+            <h3 style="color:white">Work Experience</h3>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Organisation Name" name="orgName"/>
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Overall Experience" name="experience"/>
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Acheivements" name="acheivements"/>
+                </div>
+            </div>
+            <div class="row" id="skillAndMoreRow">
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Skill" name="skill"/>
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Experience" name="experience"/>
+                </div>
+                <div class="form-group col-md-2">
+                    <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                </div>
+                <div class="form-group col-md-2">
+                    <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+                </div>
+            </div>
+        </div>
+        <div id="researchSection" style="display:none">
+            <h3 style="color:white">Research Contribution</h3><div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Topic/Article" name="article"/>
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Mentions" name="mention"/>
+                </div><div class="form-group col-md-4">
+                    <input class="form-control" type="text" placeholder="Link to research" name="linkToResearch"/>
+                </div>
             </div>
         </div>
     </div>
-    <div id="workSection" style="display:none">
-        <h3 style="color:white">Work Experience</h3>
-        <div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Organisation Name" name="orgName"/>
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Overall Experience" name="experience"/>
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Acheivements" name="acheivements"/>
-            </div>
-        </div>
-        <div class="row" id="skillAndMoreRow">
-            <div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Skill" name="skill"/>
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Experience" name="experience"/>
-            </div>
-            <div class="form-group col-md-2">
-                <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
-            </div>
-            <div class="form-group col-md-2">
-                <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
-            </div>
-        </div>
-    </div>
-    <div id="researchSection" style="display:none">
-        <h3 style="color:white">Research Contribution</h3><div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Topic/Article" name="article"/>
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Mentions" name="mention"/>
-            </div><div class="form-group col-md-4">
-                <input class="form-control" type="text" placeholder="Link to research" name="linkToResearch"/>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-@section scripts{
-    @Scripts.Render("~/Scripts/UserDefined/updateAccount.js");
-}
+@*//$(document).ready(function () {
+//    var sections = {
+//        educationSection: $("#educationSection").addClass('education'),
+//        workSection: $("#workSection"),
+//        researchSection: $("#researchSection")
+//    }
+//    $('div > label').css({ 'color': "#fff", 'margin': 'auto' });
+
+//    $("#addNewSection+ul").on('click', 'li', function () {
+//        if ($(this).text() == 'Education')
+//            $(sections.educationSection).css("display","inherit").insertBefore("#buttonGroup");
+//        else if ($(this).text() == 'Work Experience')
+//            $(sections.workSection).css("display","inherit").insertBefore("#buttonGroup");
+//        else if ($(this).text() == 'Research Papers')
+//            $(sections.researchSection).css("display", "inherit").insertBefore("#buttonGroup");
+//    });
+
+
+
+//    $("#deleteSection").on('click', function (e) {
+//        if ($(this).parent().parent().prev().hasClass('undeleteable'))
+//        {
+//            console.log("Sorry, you can't delete any row beyond this point.");
+//        }
+//        else
+//        $(this).parent().parent().prev().remove();
+//    });
+
+//    $("#formDiv").on('click', '#addExtraSkills', function () {
+//        var parent = $(this).parent().parent();
+//        $(parent).clone().appendTo("#workSection");
+//        $(this).prop('disabled', true);
+//    });
+
+//    $("#formDiv").on('click', '#deleteExtraSkills', function () {
+//        console.log($(this).parent().parent().prev().find('.btn').attr('disabled', false));
+//        $(this).parent().parent().remove();
+//    });
+
+//    $("#updateAccountButton").on('click', function () {
+//        var formData = JSON.stringify($("form").serialize());
+//        $.ajax({
+//            url: '/' + strHostName + '/Home/FinalizeUpdateAccount',
+//            type: 'POST',
+//            contentType: 'application/json; charset=utf8',
+//            data: formData,
+//            async: true,
+//            cache: false,
+//            success: function (reply) {
+//                alert("ajax successful.\nReply:" + reply);
+//            },
+//            error: function (reply) {
+//                alert("ajax failed!\nReply:" + reply);
+//            }
+//        });
+//    });
+//});*@

@@ -1,58 +1,61 @@
 ﻿var strHostName = "DemoProject";
 $(document).ready(function () {
-    var sections = {
-        educationSection: $("#educationSection").addClass('education'),
-        workSection: $("#workSection"),
-        researchSection: $("#researchSection")
-    }
-    $('div > label').css({ 'color': "#fff", 'margin': 'auto' });
-
-    $("#addNewSection+ul").on('click', 'li', function () {
-        if ($(this).text() == 'Education')
-            $(sections.educationSection).css("display","inherit").insertBefore("#buttonGroup");
-        else if ($(this).text() == 'Work Experience')
-            $(sections.workSection).css("display","inherit").insertBefore("#buttonGroup");
-        else if ($(this).text() == 'Research Papers')
-            $(sections.researchSection).css("display", "inherit").insertBefore("#buttonGroup");
+    $("#mainForm:first-child").find('.btn-danger').attr('disabled', true);
+    //$("#mainForm:not(:last-child)").each(function () {
+    //    $(this).find('.btn-danger').attr('disabled', true);
+    //    $(this).find('.btn-info').attr('disabled', true);
+    //});
+    $("#addButton").on('click', function (e) {
+        e.preventDefault();
+        var row = $(this).parent().parent().parent();
+        var clone = $(row).clone(true, true);
+        $(clone).find('.btn-danger').attr('disabled', false);
+        $(clone).find(':input').each(function () {
+            $(this).val("");
+        });
+        $(clone).insertAfter(row);
+        $(this).attr('disabled', true);
+        $(this).parent().next().find('.btn-danger').attr('disabled', true);
     });
 
-
-
-    $("#deleteSection").on('click', function (e) {
-        if ($(this).parent().parent().prev().hasClass('undeleteable'))
-        {
-            console.log("Sorry, you can't delete any row beyond this point.");
+    $("#removeButton").on('click', function (e) {
+        var prev = $(this).parent().parent().parent().prev();
+        if (!$(prev).is('h3')) {
+            prev.find('.btn-info').attr('disabled', false);
+            prev.find('.btn-danger').attr('disabled', false);
+            $(this).parent().parent().parent().remove();
+            parent = $(this).parent().parent().parent();
+            $(parent)
         }
-        else
-        $(this).parent().parent().prev().remove();
+        else {
+        }
     });
 
-    $("#formDiv").on('click', '#addExtraSkills', function () {
-        var parent = $(this).parent().parent();
-        $(parent).clone().appendTo("#workSection");
-        $(this).prop('disabled', true);
-    });
-
-    $("#formDiv").on('click', '#deleteExtraSkills', function () {
-        console.log($(this).parent().parent().prev().find('.btn').attr('disabled', false));
-        $(this).parent().parent().remove();
-    });
-
-    $("#updateAccountButton").on('click', function () {
-        var formData = JSON.stringify($("form").serialize());
+    $("#submitButton").on('click', function () {
+        var data = [];
+        $("#mainForm .formData").each(function (n) {
+            var item = {};
+            item['Name'] = $(this).find('#Name').val();
+            item['EmailID'] = $(this).find('#EmailID').val();
+            item['Password'] = $(this).find('#Password').val();
+            data.push(item);
+        });
         $.ajax({
-            url: '/' + strHostName + '/Home/FinalizeUpdateAccount',
-            type: 'POST',
-            contentType: 'application/json; charset=utf8',
-            data: '{user: {formData}}',
+            url: "/" + strHostName + "/Home/FinalizeUpdateAccount",
+            data: JSON.stringify({user: data }),
             async: true,
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
             cache: false,
-            success: function (reply) {
-                alert("ajax successful.\nReply:" + reply);
+            success: function(reply)
+            {
+               alert('ajax call successful\n' + 'Reply: ' + JSON.stringify(reply));
             },
             error: function (reply) {
-                alert("ajax failed!\nReply:" + reply);
+                alert('ajax call failed!\n' + 'Reply: ' + JSON.stringify(reply));
             }
         });
     });
+
+
 });

@@ -27,7 +27,16 @@ $(document).ready(function () {
                     },
                     {
                         targets: [2],
-                        data: "Dob"
+                        data: "Dob",
+                        render:function (value) {
+                            if (value === null) return "";
+
+                            var pattern = /Date\(([^)]+)\)/;
+                            var results = pattern.exec(value);
+                            var dt = new Date(parseFloat(results[1]));
+
+                            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+                        }
                     },
                     {
                         targets: [3],

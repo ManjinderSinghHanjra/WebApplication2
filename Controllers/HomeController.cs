@@ -43,15 +43,18 @@ namespace WebApplication2.Controllers
         }
 
         /*----------------------------------------FormFill--------------------------------------------*/
-        public ActionResult UpdateAccount()
+        public ActionResult CreateAnonymousAccounts()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult FinalizeUpdateAccount(string user)
+        public ActionResult FinalizeUpdateAccount(List<UserModel> user)
         {
-            return Json("Account Successfully updated! \n" + user);
+            List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
+            listUsers.AddRange(user);
+            HttpContext.Application["users"] = listUsers;
+            return Json("Account Successfully updated! \n Total users: " + listUsers.Count);
         }
 
 

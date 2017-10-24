@@ -35,7 +35,7 @@ $(document).ready(function () {
 	});
 
 
-	$("#signUpSubmit").on('click', function (e) {
+	$("#signupSubmit").on('click', function (e) {
 		e.preventDefault();
 		$("#signupForm").valid();
 		var json = JSON.stringify( { "Name": $("#firstName").val(), "Dob": $("#dob").val(), "EmailID": $("#email").val(), "Password": $("#password").val() } );

@@ -248,7 +248,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\Home\UpdateUserForm.cshtml" />
-    <Content Include="Views\Home\updateAccount.cshtml" />
+    <Content Include="Views\Home\CreateAnonymousAccounts.cshtml" />
+    <Content Include="Views\Home\UpdateAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
