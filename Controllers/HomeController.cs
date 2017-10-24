@@ -45,9 +45,37 @@ namespace WebApplication2.Controllers
         /*----------------------------------------FormFill--------------------------------------------*/
         public ActionResult CreateAnonymousAccounts()
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             return View();
         }
 
+        /*----------------------------------------UpdateAccount--------------------------------------------*/
+        public ActionResult UpdateAccount()
+        {
+            return View();
+        }
+
+        /*----------------------------------------Dashboard--------------------------------------------*/
+        public ActionResult UserDashboard()
+        {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
+            return View();
+        }
+
+        /*----------------------------------------Log Out--------------------------------------------*/
+        public ActionResult LogOut()
+        {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
+            UserModel user = (UserModel)HttpContext.Session["user"];
+            user.Type = UserModel.GUEST;
+            user.Auth = false;
+            HttpContext.Session["user"] = user;
+            return RedirectToAction("Login", "Login");
+        }
+
+
+
+        /*----------------------------------------FinalizeUpdate--------------------------------------------*/
         [HttpPost]
         public ActionResult FinalizeUpdateAccount(List<UserModel> user)
         {
@@ -57,6 +85,7 @@ namespace WebApplication2.Controllers
             return Json("Account Successfully updated! \n Total users: " + listUsers.Count);
         }
 
+        
 
         /*------------------------------------PopulateDataTable--------------------------------------------*/
         public ActionResult PopulateDataTable(int draw, int start, int length)
@@ -78,7 +107,7 @@ namespace WebApplication2.Controllers
         }
 
 
-        /*-----------------------------------------------------------------------------------------------------------*/
+        /*----------------------------------------Delete User---------------------------------------------------------*/
         [HttpPost]
         public void Delete(List<int> listUserIds)
         {

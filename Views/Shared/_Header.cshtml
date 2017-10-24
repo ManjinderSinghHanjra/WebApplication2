@@ -57,10 +57,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">My Contributions</a></li>
-                        <li><a href="#">Update Account</a></li>
+                        <li><a href="@Url.Action("UserDashboard", "Home")">Dashboard</a></li>
+                        <li><a href="@Url.Action("UpdateAccount", "Home")">Update Account</a></li>
                         <li><a href="@Url.Action("CreateAnonymousAccounts", "Home")">Create Anonymous Accounts</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="@Url.Action("LogOut", "Home")">Log Out</a></li>
                     </ul>
                 </li>
 			</ul>
