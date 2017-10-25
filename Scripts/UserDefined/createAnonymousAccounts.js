@@ -43,24 +43,19 @@ $(document).ready(function () {
     });
 
     $("#submitButton").on('click', function () {
-        var json = [];
+        var json = "";
         $("#mainForm .formData").each(function (n) {
             var item = '{';
             $(this).find("input[type=text]").each(function (number) {
-                item += "'" + $(this).attr('name') + "'" + ':' + "'" + $(this).val() + "'";
-                if(number<2)
-                {
-                    item += ',';
-                }
+                item += (item == '{' ? '' : ',') + ('"' + $(this).attr('name') + '"' + ':' + '"' + $(this).val() + '"');
+                
             });
             item += '}';
-            json.push(JSON.stringify(item));
-            //item += (item == "" ? "" : ("{" + item + "}"));
-            //json += item + (json == "" ? "" : ",");
+            json += (json == "" ? "" : ",") + item;
         });
         $.ajax({
             url: "/" + strHostName + "/Home/FinalizeUpdateAccount",
-            data: '{"user":'  + '["' + json  + '"]' +'}',
+            data: '{"user":'  + '[' + json  + ']' +'}',
             async: true,
             contentType: 'application/json; charset=utf-8',
             type: 'POST',

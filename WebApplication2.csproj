@@ -210,13 +210,14 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\UserDefined\about.js" />
-    <Content Include="Scripts\UserDefined\updateAccount.js" />
+    <Content Include="Scripts\UserDefined\createAnonymousAccounts.js" />
     <Content Include="Scripts\UserDefined\home.js" />
     <Content Include="Scripts\UserDefined\jquery-loader.js" />
     <Content Include="Scripts\UserDefined\login.js" />
     <Content Include="Scripts\UserDefined\modifyRecords.js" />
     <Content Include="Scripts\UserDefined\remodal.js" />
     <Content Include="Scripts\UserDefined\signup.js" />
+    <Content Include="Scripts\UserDefined\updateAccount.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Todo.txt" />
     <Content Include="Web.config" />
@@ -250,6 +251,8 @@
     <Content Include="Views\Home\UpdateUserForm.cshtml" />
     <Content Include="Views\Home\CreateAnonymousAccounts.cshtml" />
     <Content Include="Views\Home\UpdateAccount.cshtml" />
+    <Content Include="Views\Home\UserDashboard.cshtml" />
+    <Content Include="Views\Home\LogOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
