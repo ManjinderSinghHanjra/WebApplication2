@@ -107,6 +107,28 @@ $(document).ready(function () {
             else {
                 $(this).parent().parent().parent().remove();
             }
+
+        var userEmail = [];
+        var email = $(this).parent().parent().parent().find('input[name=EmailID]').val();
+        if (email == "" || email == " ")
+        {
+            return;
+        }
+        userEmail.push(email);
+        $.ajax({
+            url: "/" + strHostName + "/Home/DeleteEmail",
+            data: JSON.stringify({"listUserEmails":userEmail}),
+            async: true,
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            cache: false,
+            success: function (reply) {
+                alert('ajax call successful\n' + 'Reply: ' + JSON.stringify(reply));
+            },
+            error: function (reply) {
+                alert('ajax call failed!\n' + 'Reply: ' + JSON.stringify(reply));
+            } 
+        });
         
     });
 

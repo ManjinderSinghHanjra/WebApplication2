@@ -89,7 +89,7 @@ $(document).ready(function () {
             }
         }
         $.ajax({
-            url: "/" + strHostName + "/Home/Delete",
+            url: "/" + strHostName + "/Home/DeleteId",
             type: "POST",
             data: JSON.stringify({ "listUserIds": listUserIds }),
             contentType: "application/json; charset=utf-8",

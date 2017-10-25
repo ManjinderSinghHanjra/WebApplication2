@@ -127,7 +127,7 @@ namespace WebApplication2.Controllers
 
         /*----------------------------------------Delete User---------------------------------------------------------*/
         [HttpPost]
-        public void Delete(List<int> listUserIds)
+        public void DeleteId(List<int> listUserIds)
         {
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
             foreach (int Id in listUserIds)
@@ -146,6 +146,25 @@ namespace WebApplication2.Controllers
             _filteredResults = (List<UserModel>)HttpContext.Application["users"];
         }
 
+        [HttpPost]
+        public void DeleteEmail(List<string> listUserEmails)
+        {
+            List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
+            foreach (string email in listUserEmails)
+            {
+                foreach (UserModel user in listUsers)
+                {
+                    if (user.EmailID.Equals(email))
+                    {
+                        listUsers.Remove(user);
+                        break;
+                    }
+                }
+            }
+            RECORD_SIZE = listUsers.Count;
+            HttpContext.Application["users"] = listUsers;
+            _filteredResults = (List<UserModel>)HttpContext.Application["users"];
+        }
 
 
 
