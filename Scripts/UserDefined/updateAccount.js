@@ -1,4 +1,23 @@
-﻿$(document).ready(function () {
+﻿var strHostName = "DemoProject";
+var totalButtons = 1;
+$(document).ready(function () {
+
+    $.ajax({
+        url: '/' + strHostName + 'Home/PopulateAccountInfo',
+        type:'GET',
+        contentType: 'application/json; charset="utf=8"',
+        cache: false,
+        async: true,
+        success: function(reply)
+        {
+            alert(reply);
+        },
+        error: function(reply)
+        {
+            alert("ajax error" + reply);
+        }
+    });
+
     var sections = {
         educationSection: $("#educationSection").addClass('education'),
         workSection: $("#workSection"),
@@ -8,9 +27,10 @@
 
     $("#addNewSection+ul").on('click', 'li', function () {
         if ($(this).text() == 'Education')
-            $(sections.educationSection).css("display","inherit").insertBefore("#buttonGroup");
-        else if ($(this).text() == 'Work Experience')
-            $(sections.workSection).css("display","inherit").insertBefore("#buttonGroup");
+            $(sections.educationSection).css("display", "inherit").insertBefore("#buttonGroup");
+        else if ($(this).text() == 'Work Experience') {
+            $(sections.workSection).find('.btn-danger').attr('disabled', true).end().css("display", "inherit").insertBefore("#buttonGroup");
+        }
         else if ($(this).text() == 'Research Papers')
             $(sections.researchSection).css("display", "inherit").insertBefore("#buttonGroup");
     });
@@ -18,23 +38,46 @@
 
 
     $("#deleteSection").on('click', function (e) {
-        if ($(this).parent().parent().prev().hasClass('undeleteable'))
-        {
+        if ($(this).parent().parent().prev().hasClass('undeleteable')) {
             console.log("Sorry, you can't delete any row beyond this point.");
         }
         else
-        $(this).parent().parent().prev().remove();
+            $(this).parent().parent().prev().remove();
     });
 
     $("#formDiv").on('click', '#addExtraSkills', function () {
+        totalButtons += 1;
         var parent = $(this).parent().parent();
-        $(parent).clone().appendTo("#workSection");
+        $(parent).find('.btn-danger').attr('disabled', false).end().clone().appendTo("#workSection");
         $(this).prop('disabled', true);
     });
 
     $("#formDiv").on('click', '#deleteExtraSkills', function () {
-        console.log($(this).parent().parent().prev().find('.btn').attr('disabled', false));
+        var prev = $(this).parent().parent().prev();
+        var next = $(this).parent().parent().next();
+        console.log($(prev).attr('id'));
+        console.log($(next).attr('id'));
+        if (totalButtons == 2) {
+            if ($(prev).prev().is('h3')) {
+                $(next).find('.btn-primary').attr('disabled', false);
+                $(next).find('.btn-danger').attr('disabled', true);
+            }
+            else {
+                $(prev).find('.btn-primary').attr('disabled', false);
+                $(prev).find('.btn-danger').attr('disabled', true);
+            }
+            $(this).parent().parent().remove();
+        }
+        else
+            if ($(prev).attr('id') == 'skillAndMoreRow' && $(next).attr('id') == 'skillAndMoreRow') {
+            }
+            else {
+                $(prev).find('.btn-primary').attr('disabled', false);
+            }
         $(this).parent().parent().remove();
+        totalButtons -= 1;
+        //$(this).parent().parent().prev().find('.btn').attr('disabled', false);
+
     });
 
     $("#updateAccountButton").on('click', function () {

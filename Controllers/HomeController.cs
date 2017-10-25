@@ -49,10 +49,28 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AnonymousAccountInfo(int count)
+        {
+            List<UserModel> users = ((List<UserModel>)HttpContext.Application["users"]).GetRange(0, count);
+            var json = JsonConvert.SerializeObject(users);
+            System.Console.WriteLine(json);
+            return Json(json);
+        }
+
         /*----------------------------------------UpdateAccount--------------------------------------------*/
         public ActionResult UpdateAccount()
         {
             return View();
+        }
+
+
+        /*----------------------------------------PopulateAccountInfo--------------------------------------------*/
+        [HttpGet]
+        public ActionResult PopulateAccountInfo()
+        {
+            UserModel user = (UserModel)HttpContext.Session["user"];
+            return Json('{' + @"user" + ":" + '[' + user + ']' + '}');
         }
 
         /*----------------------------------------Dashboard--------------------------------------------*/
@@ -85,7 +103,7 @@ namespace WebApplication2.Controllers
             return Json("Account Successfully updated! \n Total users: " + listUsers.Count);
         }
 
-        
+
 
         /*------------------------------------PopulateDataTable--------------------------------------------*/
         public ActionResult PopulateDataTable(int draw, int start, int length)
@@ -111,7 +129,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public void Delete(List<int> listUserIds)
         {
-            List<UserModel> listUsers = (List<UserModel>) HttpContext.Application["users"];
+            List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
             foreach (int Id in listUserIds)
             {
                 foreach (UserModel user in listUsers)
@@ -157,7 +175,7 @@ namespace WebApplication2.Controllers
             TempData["updateUser"] = TempData["userId"] == null ? oDummy : DataTableUtilities.search((int)TempData["userId"]);
             return View(TempData["updateuser"]);
         }
-        
+
         [HttpPost]
         public ActionResult UpdateUserCommit(UserModel oUpdateUserModel)
         {

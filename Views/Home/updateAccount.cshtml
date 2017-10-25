@@ -7,16 +7,16 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputName">Last Name</label>
-                <input type="text" class="form-control" name="lastName"/>
+                <input type="text" class="form-control" name="lastName" />
             </div>
         </div>
         <div class="form-group">
             <label for="emailID">EmailID</label>
-            <input class="col-md-8 form-control" type="email" placeholder="abc@example.com" name="EmailID"/>
+            <input class="col-md-8 form-control" type="email" placeholder="abc@example.com" name="EmailID" />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" placeholder="abc@example.com" name="Password"/>
+            <input class="form-control" type="password" placeholder="abc@example.com" name="Password" />
         </div>
         <div class="row undeleteable">
             <div class="form-group col-md-4">
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="nationality">Nationality</label>
-                <input type="text" class="form-control" name="Nationality"/>
+                <input type="text" class="form-control" name="Nationality" />
             </div>
         </div>
         <div class="row" id="buttonGroup">
@@ -49,62 +49,62 @@
                 <button class="form-group btn btn-primary" style="width:100%" id="deleteSection" type="button"><span class="glyphicon glyphicon-remove"></span>Delete</button>
             </div>
         </div>
-            <button id="updateAccountButton" type="button" class="btn btn-info">Update Your Account</button>
+        <button id="updateAccountButton" type="button" class="btn btn-info">Update Your Account</button>
     </form>
 
 
 
-<!-------------------------------- Hidden Sections, here onwards-------------------------------->
-<div id="educationSection" style="display:none">
-            <h3 style="color:white">Education</h3><div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Board/University Name" name="University"/>
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Minors/Majors" name="Majors" />
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Marks %" name="Marks" />
-                </div>
-            </div>
-        </div>
-        <div id="workSection" style="display:none">
-            <h3 style="color:white">Work Experience</h3>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Organisation Name" name="orgName"/>
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Overall Experience" name="experience"/>
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Acheivements" name="acheivements"/>
-                </div>
-            </div>
-            <div class="row" id="skillAndMoreRow">
-                <div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Skill" name="skill"/>
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Experience" name="experience"/>
-                </div>
-                <div class="form-group col-md-2">
-                    <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
-                </div>
-                <div class="form-group col-md-2">
-                    <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
-                </div>
-            </div>
-        </div>
-        <div id="researchSection" style="display:none">
-            <h3 style="color:white">Research Contribution</h3><div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Topic/Article" name="article"/>
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Mentions" name="mention"/>
-                </div><div class="form-group col-md-4">
-                    <input class="form-control" type="text" placeholder="Link to research" name="linkToResearch"/>
-                </div>
+    <!-------------------------------- Hidden Sections, here onwards-------------------------------->
+    <div id="educationSection" style="display:none">
+        <h3 style="color:white">Education</h3><div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Board/University Name" name="University" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Minors/Majors" name="Majors" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Marks %" name="Marks" />
             </div>
         </div>
     </div>
+    <div id="workSection" style="display:none">
+        <h3 style="color:white">Work Experience</h3>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Organisation Name" name="orgName" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Overall Experience" name="experience" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Acheivements" name="acheivements" />
+            </div>
+        </div>
+        <div class="row" id="skillAndMoreRow">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Skill" name="skill" />
+            </div>
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Experience" name="experience" />
+            </div>
+            <div class="form-group col-md-2">
+                <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+            </div>
+        </div>
+    </div>
+    <div id="researchSection" style="display:none">
+        <h3 style="color:white">Research Contribution</h3><div class="row">
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Topic/Article" name="article" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Mentions" name="mention" />
+            </div><div class="form-group col-md-4">
+                <input class="form-control" type="text" placeholder="Link to research" name="linkToResearch" />
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
-    @Scripts.Render("~/Scripts/updateAccount.js");
-    }
+    @Scripts.Render("~/Scripts/UserDefined/updateAccount.js");
+}

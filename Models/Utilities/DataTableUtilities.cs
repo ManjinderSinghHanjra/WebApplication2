@@ -24,6 +24,8 @@ namespace WebApplication2.Models.Utilities
             foreach (UserModel user in listUsers)
             {
                 Regex regex = new Regex(strSearchParams);
+                if (user.EmailID == null)
+                    user.EmailID = "N/A";
                 if (regex.IsMatch(user.EmailID))
                 {
                     templistUsers.Add(user);
@@ -44,6 +46,8 @@ namespace WebApplication2.Models.Utilities
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Current.Application["users"];
             foreach (UserModel user in listUsers)
             {
+                if (user.Id == null)
+                    user.Id = -100;
                 if (user.Id == userId)
                     return user;
             }
@@ -61,6 +65,8 @@ namespace WebApplication2.Models.Utilities
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Current.Application["users"];
             foreach (UserModel user in listUsers)
             {
+                if (user.EmailID == null)
+                    user.EmailID = "N/A";
                 if (user.EmailID.Equals(email))
                     return user;
             }
