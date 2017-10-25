@@ -73,6 +73,7 @@ namespace WebApplication2.Controllers
                     return Json("Username and/or password mismatch!");
                     break; // For safety
                 case USER_PASS_MATCHED:
+                    Session["user"] = WebApplication2.Models.Utilities.DataTableUtilities.search(email);
                     ((UserModel)Session["user"]).Type = UserModel.USER;
                     return Json("OK!");
                     break;

@@ -1,20 +1,29 @@
 ﻿var strHostName = "DemoProject";
 var totalButtons = 1;
+function JsonToForm(user) {
+    var keys = Object.keys(user);
+    console.log(keys);
+    console.log(user.Name);
+    for (var j = 0; j < keys.length; j++) {
+        console.log(keys[j]);
+        if ($('form div').find("input" + "[name=" + keys[j] + "]").length != 0) {
+            $('form div').find("input" + "[name=" + keys[j] + "]").attr('value', user[keys[j]]);
+        }
+    }
+}
 $(document).ready(function () {
 
     $.ajax({
-        url: '/' + strHostName + 'Home/PopulateAccountInfo',
-        type:'GET',
+        url: '/' + strHostName + '/Home/PopulateAccountInfo',
+        type: 'POST',
         contentType: 'application/json; charset="utf=8"',
         cache: false,
         async: true,
-        success: function(reply)
-        {
-            alert(reply);
+        success: function (user) {
+            JsonToForm(user);
         },
-        error: function(reply)
-        {
-            alert("ajax error" + reply);
+        error: function (reply) {
+            alert(reply);
         }
     });
 
@@ -27,7 +36,7 @@ $(document).ready(function () {
 
     $("#addNewSection+ul").on('click', 'li', function () {
         if ($(this).text() == 'Education')
-            $(sections.educationSection).css("display", "inherit").insertBefore("#buttonGroup");
+            $(sections.educationSection).css({ "display": "inherit" }).insertBefore("#buttonGroup");
         else if ($(this).text() == 'Work Experience') {
             $(sections.workSection).find('.btn-danger').attr('disabled', true).end().css("display", "inherit").insertBefore("#buttonGroup");
         }

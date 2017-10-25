@@ -54,7 +54,6 @@ namespace WebApplication2.Controllers
         {
             List<UserModel> users = ((List<UserModel>)HttpContext.Application["users"]).GetRange(0, count);
             var json = JsonConvert.SerializeObject(users);
-            System.Console.WriteLine(json);
             return Json(json);
         }
 
@@ -66,11 +65,12 @@ namespace WebApplication2.Controllers
 
 
         /*----------------------------------------PopulateAccountInfo--------------------------------------------*/
-        [HttpGet]
+        [HttpPost]
         public ActionResult PopulateAccountInfo()
         {
             UserModel user = (UserModel)HttpContext.Session["user"];
-            return Json('{' + @"user" + ":" + '[' + user + ']' + '}');
+            var json = JsonConvert.SerializeObject(user);
+            return Json(user);
         }
 
         /*----------------------------------------Dashboard--------------------------------------------*/
