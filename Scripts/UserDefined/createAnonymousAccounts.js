@@ -1,5 +1,5 @@
 ﻿var strHostName = "DemoProject";
-var rowCount = 0;
+var rowCount = 1;
 var formRow;
 function cloneAButtonRow(button) {
     var row = $(button).parent().parent().parent();
@@ -59,7 +59,7 @@ function JsonToForm(reply) {
 $(document).ready(function () {
 
     formRow = $(".formData");
-    $(formRow).css('display','inherit').insertAfter('h3');
+    $(formRow).css('display','inherit').find('.btn-danger').attr('disabled', true).end().insertAfter('h3');
     $("#fetchDataButton").on('click', function () {
  
         $.ajax({
@@ -81,14 +81,14 @@ $(document).ready(function () {
         var row = $(this).parent().parent().parent();
         var clone = cloneAButtonRow(this);
         $(clone).insertAfter(row);
-        rowCount += 1;
         $(this).attr('disabled', true);
     });
 
     $("#mainForm").on('click', "div #removeButton", function (e) {
         var next = $(this).parent().parent().parent().next();
         rowCount -= 1;
-        if (rowCount <= 1) {
+        var x = $("#mainForm .formData").length;
+        if ( x  <= 2) {
             if ($(next).hasClass('submitButtonClass') == true) {
                 $("#mainForm:first-child").find('.btn-danger').attr('disabled', true);
                 $("#mainForm:first-child").find('.btn-info').attr('disabled', false);
