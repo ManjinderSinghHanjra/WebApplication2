@@ -50,7 +50,21 @@ namespace WebApplication2.Models.Utilities
         {
             int year = 1000, month = 1, date = 1;
             List<UserModel> users = new List<UserModel>();
-            users.Add(new UserModel() { Id = 0, Name = "Admin", Dob = DateTime.Now, EmailID = "admin", Password = "admin" });
+            users.Add(new UserModel()
+            {
+                Id = 0,
+                Name = "Admin",
+                Dob = DateTime.Now,
+                EmailID = "admin",
+                Password = "admin",
+                Age = 22,
+                Nationality = "Indian",
+                Type = UserModel.USER,
+                List_Education = new List<Education>(){ new WebApplication2.Models.Education() { University = "IKPTU", Specialization = "Bio-Informatics", Marks = 70 } },
+                List_WorkExperience = new List<WorkExperience>() { new WebApplication2.Models.WorkExperience() { Organisation = "Patient Bond", Acheivements = "None", Skills = "SkillLevel-Novice", Experience = 100 , TotalExperience = 1000} },
+                List_ResearchContribution = new List<ResearchContribution>() { new WebApplication2.Models.ResearchContribution() { Paper = "Gene Mutation in Gilbert Syndrome Patient", Mentions = "Patient Bond Biology Journal", Hyperlink = "none" },
+                new WebApplication2.Models.ResearchContribution() { Paper = "Neutrino Bombardment Effect with Liquid Nitrogen", Mentions = "Patient Bond Physics Journal", Hyperlink = "none" }}
+            });
             for (int i = 0; i < 50; i++)
             {
                 users.Add(new UserModel() { Id = i+1, Name = (char)(i + 'a') + "Name", Dob = new DateTime(year, month, date), EmailID = (char)(i + (int)'a') + "@gmail.com", Password = i + "Password" });

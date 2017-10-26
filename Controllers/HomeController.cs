@@ -60,6 +60,7 @@ namespace WebApplication2.Controllers
         /*----------------------------------------UpdateAccount--------------------------------------------*/
         public ActionResult UpdateAccount()
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             return View();
         }
 
@@ -68,7 +69,8 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult PopulateAccountInfo()
         {
-            UserModel user = (UserModel)HttpContext.Session["user"];
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
+            UserModel user = ((UserModel)HttpContext.Session["user"]);
             var json = JsonConvert.SerializeObject(user);
             return Json(user);
         }
@@ -97,6 +99,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult FinalizeUpdateAccount(List<UserModel> user)
         {
+            if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
             listUsers.AddRange(user);
             HttpContext.Application["users"] = listUsers;
@@ -129,6 +132,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public void DeleteId(List<int> listUserIds)
         {
+
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Application["users"];
             foreach (int Id in listUserIds)
             {
@@ -196,11 +200,16 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateUserCommit(UserModel oUpdateUserModel)
+        public ActionResult UpdateUserCommit(UserModel user)
         {
             if (GeneralUtilities.whoIs() == UserModel.GUEST) return RedirectToAction("Login", "Login");
-
-            return Json("Record Update- Status: " + GeneralUtilities.stringifyStatus(static_oDataTableUtilites.updateUser(oUpdateUserModel)) + "!");
+            UserModel temp = new UserModel();
+            temp = DataTableUtilities.search(((UserModel)(HttpContext.Session["user"])).Id);
+            user.Auth = temp.Auth;
+            user.Id = temp.Id;
+            user.Type = temp.Type;
+            HttpContext.Session["user"] = user;
+            return Json("Record Update- Status: " + GeneralUtilities.stringifyStatus(static_oDataTableUtilites.updateUser(user)) + "!");
         }
 
     }

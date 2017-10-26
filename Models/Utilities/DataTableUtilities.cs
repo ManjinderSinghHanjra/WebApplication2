@@ -46,8 +46,6 @@ namespace WebApplication2.Models.Utilities
             List<UserModel> listUsers = (List<UserModel>)HttpContext.Current.Application["users"];
             foreach (UserModel user in listUsers)
             {
-                if (user.Id == null)
-                    user.Id = -100;
                 if (user.Id == userId)
                     return user;
             }
