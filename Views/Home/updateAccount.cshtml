@@ -53,56 +53,65 @@
 
     <!-------------------------------- Hidden Sections, here onwards-------------------------------->
     <div id="educationSection" style="display:none">
-        <h3 style="color:white">Education</h3><div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Board/University Name" name="University" />
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Minors/Majors" name="Specialization" />
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Marks %" name="Marks" />
+        <h3 style="color:white">Education</h3>
+        <div class="educationSectionRow" style="display:none">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Board/University Name" name="University" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Minors/Majors" name="Specialization" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Marks %" name="Marks" />
+                </div>
             </div>
         </div>
     </div>
     <div id="workSection" style="display:none">
         <h3 style="color:white">Work Experience</h3>
-        <div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Organisation Name" name="Organisation" />
+        <div class="workSectionRow" style="display:none">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Organisation Name" name="Organisation" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Overall Experience" name="TotalExperience" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Acheivements" name="Acheivements" />
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Overall Experience" name="TotalExperience" />
+            <div class="row" id="skillAndMoreRow">
+                <div class="form-group col-md-4">
+                    <input class="form-control FormData" type="text" placeholder="Skill" name="Skills" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control FormData" type="text" placeholder="Experience" name="Experience" />
+                </div>
+                <div class="form-group col-md-2">
+                    <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                </div>
+                <div class="form-group col-md-2">
+                    <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Acheivements" name="Acheivements" />
-            </div>
-        </div>
-        <div class="row" id="skillAndMoreRow">
-            <div class="form-group col-md-4">
-                <input class="form-control FormData" type="text" placeholder="Skill" name="Skills" />
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control FormData" type="text" placeholder="Experience" name="Experience" />
-            </div>
-            <div class="form-group col-md-2">
-                <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
-            </div>
-            <div class="form-group col-md-2">
-                <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
-            </div>
+            
         </div>
     </div>
     <div id="researchSection" style="display:none">
-        <h3 style="color:white">Research Contribution</h3><div class="row">
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Topic/Article" name="Paper" />
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Mentions" name="Mentions" />
-            </div>
-            <div class="form-group col-md-4">
-                <input class="form-control " type="text" placeholder="Link to research" name="Hyperlink" />
+        <h3 style="color:white">Research Contribution</h3>
+        <div class="researchSectionRow" style="display:none;">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Topic/Article" name="Paper" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Mentions" name="Mentions" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input class="form-control " type="text" placeholder="Link to research" name="Hyperlink" />
+                </div>
             </div>
         </div>
     </div>
