@@ -175,6 +175,7 @@ $(document).ready(function () {
         if (length == 1) {
             closestSectionRow.closest('.section').remove();                             //Remove the entire section
         }
+        else
         if (parseInt(closestSectionRow.attr('index')) == length - 1) {
 
             $(allSiblingSectionRows[length - 2]).find('.btn-danger').attr('disabled', false);
