@@ -1,28 +1,28 @@
-﻿// Todo: Fix the RouteConfig
+﻿/*  Todo: Fix the RouteConfig
 
-// Todo: Naming convention : Done
-// Todo: Reflect Name changes in js files as well. : Done
-// Todo: Make the Table data manipulated based on UserID : 
+  Todo: Naming convention : Done
+  Todo: Reflect Name changes in js files as well. : Done
+  Todo: Make the Table data manipulated based on UserID : 
 		Done -- generateDummyUsers()
 		Done -- Rewrite about.js and DataTable
 		Done -- Rewrite all those Actions that deal with DataTable
-// Todo: Improve DataTable delete in js		: Done
-// Todo: Rename ModifyRecord & its companions	: Done
-// Todo: Do the documentation of all those methods that introduce some level of complexity.   : Done
+  Todo: Improve DataTable delete in js		: Done
+  Todo: Rename ModifyRecord & its companions	: Done
+  Todo: Do the documentation of all those methods that introduce some level of complexity.   : Done
 		Done -- DataTable delete made fast
 
 
-// Todo: Make logic more apparent and readable
-// Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
-// Todo: Fix missing tether.io file error in js
+  Todo: Make logic more apparent and readable
+  Todo: Check  user.auth to prevent any privilige escalation. User can embed his own json data with  -  user.auth=true . So beware!
+  Todo: Fix missing tether.io file error in js
 
-// Todo: Date in datepicker isn't formatted correctly as the result returned from C#
-
-
-/* Todo: Try separating stuff into interfaces & classes to get a heirarchy. */
-/* Todo: Better alernative to List approach as the Time Complexity is constant in dictionary lookup */
-
-// Todo: The parentCheckbox remains selected if user navigates to another DataTable page.
+  Todo: Date in datepicker isnt formatted correctly as the result returned from C# : Done
 
 
-//Todo: User Dashboard
+ Todo: Try separating stuff into interfaces & classes to get a heirarchy.
+ Todo: Better alernative to List approach as the Time Complexity is constant in dictionary lookup
+
+  Todo: The parentCheckbox remains selected if user navigates to another DataTable page.
+
+
+ Todo: User Dashboard*/

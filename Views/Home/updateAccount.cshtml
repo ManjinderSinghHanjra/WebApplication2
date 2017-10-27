@@ -1,116 +1,180 @@
-﻿<div class="container-fluid" id="formDiv" style="padding: 50px; width:800px">
-    <form style="padding:10px; margin:10px">
-        <h3 style="text-align:center; color:#fff;"><strong>User Dashboard</strong></h3>
-        <div class="row mandatory">
-            <div class="form-group col-md-12">
-                <label class="FormData" for="inputName">Full Name</label>
-                <input type="text" class="form-control" name="Name" />
+﻿<div class="container-fluid" id="formDiv" style="padding-top: 50px;">
+    <div class="row Dashboard" style="margin: 20px;">
+        <div class="col-md-3" id="dashboardLeft" style="padding:10px; margin:10px; text-align:center">
+            <div class="row" style="height:40% !important">
+                <div class="form-group col-md-12">
+                    <img src="https://s-media-cache-ak0.pinimg.com/originals/9f/00/af/9f00af501d2d324ac7f8ebb559fc25dd.png" alt="User Photo" style=" height:100%; width:100%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <p style="color: #fff; border-bottom: 2px groove grey"><a href="#"><a href="#"><strong>Inbox</strong></a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <p style="color: #fff; border-bottom: 2px groove grey"><a href="#"><strong>Outbox</strong></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <p style="color: #fff; border-bottom: 2px groove grey"><a href="#"><strong>Update Account</strong></a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <p style="color: #fff; border-bottom: 2px groove grey"><a href="#"><strong>Friends List</strong></a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <p style="color: #fff; border-bottom: 2px groove grey"><a href="#"><strong>Report</strong></a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <p style="color:#fff; border-bottom:2px groove grey"><a href="#"><strong>Contributions</strong></a></p>
+                </div>
             </div>
         </div>
-        <div class="form-group mandatory">
-            <label for="emailID">EmailID</label>
-            <input class="form-control FormData" type="email" placeholder="abc@example.com" name="EmailID" />
-        </div>
-        <div class="form-group mandatory">
-            <label for="password">Password</label>
-            <input class="form-control FormData" type="password" placeholder="abc@example.com" name="Password" />
-        </div>
-        <div class="row undeleteable mandatory">
-            <div class="form-group col-md-4">
-                <label for="age">Age</label>
-                <input type="number" class="form-control FormData" name="Age" />
-            </div>
-            <div class="form-group col-md-4">
-                <label for="gender">Gender</label>
-                <select class="custom-select form-control FormData" name="Gender">
-                    <option selected>Male</option>
-                    <option>Female</option>
-                    <option>Trans</option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="nationality">Nationality</label>
-                <input type="text" class="form-control FormData" name="Nationality" />
-            </div>
-        </div>
-        <div class="row" id="buttonGroup">
-            <div class="form-group dropdown col-md-4">
-                <button id="addNewSection" type="button" style="width:100%" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>Add</button>
-                <ul class="dropdown-menu text-center" style="width: 100%">
-                    <li><a id="educationSectionButton">Education</a></li>
-                    <li><a id="workSectionButton">Work Experience</a></li>
-                    <li><a id="researchSectionButton">Research Papers</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <button class="form-group btn btn-primary" style="width:100%" id="deleteSection" type="button"><span class="glyphicon glyphicon-remove"></span>Delete</button>
-            </div>
-        </div>
-        <button id="updateAccountButton" type="button" class="btn btn-info">Update Your Account</button>
-    </form>
+        <div class="col-md-7" id="dashboardRight" style="padding:10px; margin:10px; ">
+            <form style="padding:10px; margin:10px">
+                <h3 style="text-align:center; color:#fff;"><strong>User Dashboard</strong></h3>
+                <div class="row mandatory">
+                    <div class="form-group col-md-12">
+                        <label class="FormData" for="inputName">Full Name</label>
+                        <input type="text" class="form-control" name="Name" />
+                    </div>
+                </div>
+                <div class="form-group mandatory">
+                    <label for="emailID">EmailID</label>
+                    <input class="form-control FormData" type="email" placeholder="abc@example.com" name="EmailID" />
+                </div>
+                <div class="form-group mandatory">
+                    <label for="password">Password</label>
+                    <input class="form-control FormData" type="password" placeholder="abc@example.com" name="Password" />
+                </div>
+                <div class="row undeleteable mandatory">
+                    <div class="form-group col-md-4">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control FormData" name="Age" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="gender">Gender</label>
+                        <select class="custom-select form-control FormData" name="Gender">
+                            <option selected>Male</option>
+                            <option>Female</option>
+                            <option>Trans</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" class="form-control FormData" name="Nationality" />
+                    </div>
+                </div>
+                <div class="row" id="buttonGroup">
+                    <br />
+                    <div class="form-group dropdown col-md-4">
+                        <button id="addNewSection" type="button" style="width:100%" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>Add Section</button>
+                        <ul class="dropdown-menu text-center" style="width: 100%">
+                            <li><a id="educationSectionButton">Education</a></li>
+                            <li><a id="workSectionButton">Work Experience</a></li>
+                            <li><a id="researchSectionButton">Research Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <button class="form-group btn btn-success" style="width:100%" id="deleteSection" type="button"><span class="glyphicon glyphicon-remove"></span>Delete Section</button>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <button id="updateAccountButton" type="button" style="width:100%" class="form-group btn btn-success ">Update Your Account</button>
+                    </div>
+                </div>
+            </form>
 
 
 
-    <!-------------------------------- Hidden Sections, here onwards-------------------------------->
-    <div id="educationSection" style="display:none">
-        <h3 style="color:white">Education</h3>
-        <div class="educationSectionRow" style="display:none">
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Board/University Name" name="University" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Minors/Majors" name="Specialization" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Marks %" name="Marks" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="workSection" style="display:none">
-        <h3 style="color:white">Work Experience</h3>
-        <div class="workSectionRow" style="display:none">
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Organisation Name" name="Organisation" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Overall Experience" name="TotalExperience" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Acheivements" name="Acheivements" />
+            <!-------------------------------- Hidden Sections, here onwards-------------------------------->
+            <div id="educationSection" class="section" style="display:none">
+                <h3 style="color:white">Education</h3>
+                <div class="educationSectionRow sectionRow" style="display:none">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Board/University Name" name="University" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Minors/Majors" name="Specialization" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Marks %" name="Marks" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-primary addRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-danger deleteRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row" id="skillAndMoreRow">
-                <div class="form-group col-md-4">
-                    <input class="form-control FormData" type="text" placeholder="Skill" name="Skills" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control FormData" type="text" placeholder="Experience" name="Experience" />
-                </div>
-                <div class="form-group col-md-2">
-                    <button class="form-control btn btn-primary" id="addExtraSkills" name="extraSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
-                </div>
-                <div class="form-group col-md-2">
-                    <button class="form-control btn btn-danger" id="deleteExtraSkills" name="deleteSkill" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+            <div id="workSection" class="section" style="display:none">
+                <h3 style="color:white">Work Experience</h3>
+                <div class="workSectionRow sectionRow" style="display:none">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Organisation Name" name="Organisation" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Overall Experience" name="TotalExperience" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Acheivements" name="Acheivements" />
+                        </div>
+                    </div>
+                    <div class="row" id="skillAndMoreRow">
+                        <div class="form-group col-md-4">
+                            <input class="form-control FormData" type="text" placeholder="Skill" name="Skills" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control FormData" type="text" placeholder="Experience" name="Experience" />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-primary addRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-danger deleteRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            
-        </div>
-    </div>
-    <div id="researchSection" style="display:none">
-        <h3 style="color:white">Research Contribution</h3>
-        <div class="researchSectionRow" style="display:none;">
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Topic/Article" name="Paper" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Mentions" name="Mentions" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input class="form-control " type="text" placeholder="Link to research" name="Hyperlink" />
+            <div id="researchSection" class="section" style="display:none">
+                <h3 style="color:white">Research Contribution</h3>
+                <div class="researchSectionRow sectionRow" style="display:none;">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Topic/Article" name="Paper" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Mentions" name="Mentions" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control " type="text" placeholder="Link to research" name="Hyperlink" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-primary addRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="form-control btn btn-danger deleteRowButton" style="width:100%" type="button"><span class="glyphicon glyphicon-remove"></span>Delete </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
